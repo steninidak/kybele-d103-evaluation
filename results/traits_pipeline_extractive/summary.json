@@ -1,0 +1,59 @@
+{
+  "pipeline_extractive": {
+    "n": 125,
+    "errors": 0,
+    "plazi_answered": 1.0,
+    "plazi_em": 0.448,
+    "plazi_em_ci95": [
+      0.368,
+      0.536
+    ],
+    "plazi_contains": 0.544,
+    "plazi_contains_ci95": [
+      0.456,
+      0.624
+    ],
+    "plazi_f1": 0.5586044178044178,
+    "plazi_f1_ci95": [
+      0.4809125541125541,
+      0.6340229104229105
+    ],
+    "plazi_rougeL": 0.5658582845150371,
+    "plazi_faith": null,
+    "top_em": 0.352,
+    "top_contains": 0.432,
+    "top_f1": 0.4442324786324786,
+    "gold_retrieved": 0.968,
+    "gold_retrieved_ci95": [
+      0.936,
+      0.992
+    ],
+    "gold_answer_doc": 0.872,
+    "top_is_plazi": 0.688,
+    "mean_pipeline_time_s": 2.244544,
+    "mean_wall_s": 5.30048,
+    "by_question_type": {
+      "body_size": {
+        "n": 60,
+        "plazi_em": 0.7833333333333333,
+        "plazi_contains": 0.8333333333333334,
+        "plazi_f1": 0.8222222222222222,
+        "gold_retrieved": 0.9666666666666667
+      },
+      "habitat": {
+        "n": 58,
+        "plazi_em": 0.10344827586206896,
+        "plazi_contains": 0.25862068965517243,
+        "plazi_f1": 0.2966638725259415,
+        "gold_retrieved": 0.9827586206896551
+      },
+      "trophic_guild": {
+        "n": 7,
+        "plazi_em": 0.42857142857142855,
+        "plazi_contains": 0.42857142857142855,
+        "plazi_f1": 0.46938775510204084,
+        "gold_retrieved": 0.8571428571428571
+      }
+    }
+  }
+}

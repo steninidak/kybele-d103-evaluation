@@ -1,0 +1,50 @@
+{
+  "pipeline_extractive": {
+    "body_size_negative": {
+      "n": 30,
+      "correct": 1.0,
+      "wrong": 0.0,
+      "no_answer": 0.0,
+      "geography": 0.0,
+      "top_correct": 1.0,
+      "gold_retrieved": 0.967,
+      "top_is_plazi": 0.9,
+      "mean_wall_s": 5.27,
+      "stored": {
+        "n": 30,
+        "correct": 1.0,
+        "wrong": 0.0,
+        "no_answer": 0.0
+      },
+      "gold_in_pipeline_ids": 1.0,
+      "no_docs": 0.0,
+      "pipeline_collection": {
+        "medline": 3,
+        "plazi": 27
+      }
+    },
+    "trophic_guild_negative": {
+      "n": 30,
+      "correct": 0.9,
+      "wrong": 0.1,
+      "no_answer": 0.0,
+      "geography": 0.0,
+      "top_correct": 0.9,
+      "gold_retrieved": 0.967,
+      "top_is_plazi": 0.767,
+      "mean_wall_s": 5.46,
+      "stored": {
+        "n": 30,
+        "correct": 1.0,
+        "wrong": 0.0,
+        "no_answer": 0.0
+      },
+      "gold_in_pipeline_ids": 0.967,
+      "no_docs": 0.0,
+      "pipeline_collection": {
+        "medline": 7,
+        "plazi": 23
+      }
+    }
+  }
+}

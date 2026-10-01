@@ -21,6 +21,14 @@ Gold guilds are per question for the gold-document configurations and the union 
 taxon's questions for end-to-end configurations. Because most springtails are fungivores, the
 script also scores two constant answers ("fungi"; "fungi and decaying plant litter") as baselines.
 
+The scored answer is the one the pipeline keeps: the highest answer_score across collections
+(genus batch, collembola_trophic_batch.parse_biomoqa_response) for the five service
+configurations and for genus questions of the pipeline configuration; for species questions of
+the pipeline configuration, the first non-empty answer in the order the service returns the
+collections (collembola_species_traits.query_qa_docrefs). For the pipeline configuration,
+gold_retrieved means the gold document was among the documents the pipeline's phrase search
+passed to the reader.
+
 Usage: python3 score_trophic.py benchmark_trophic.csv runs.jsonl out_dir
 """
 
@@ -186,6 +194,21 @@ def pipeline_answer(resp):
     return best, best_col, ids
 
 
+def first_answer(resp):
+    """First non-empty answer in the order the collections are returned, with all doc ids."""
+    best, col, ids = "", "", set()
+    for cr in resp.get("collection_results") or []:
+        answers = cr.get("answers") or []
+        for a in answers:
+            for d in a.get("docs") or []:
+                if d.get("docid"):
+                    ids.add(str(d["docid"]))
+        text = (answers[0].get("answer") or "") if answers else ""
+        if text and not best:
+            best, col = text, cr.get("collection", "")
+    return best, col, ids
+
+
 def wilson(k, n, z=1.96):
     if n == 0:
         return (0.0, 0.0)
@@ -203,7 +226,8 @@ def main(bench_path, runs_path, out_dir="."):
         if not line.strip():
             continue
         run = json.loads(line)
-        if run["qid"] not in bench or run.get("error") or is_server_error(run.get("response") or {}):
+        if run["qid"] not in bench or run.get("error") or (
+                not run.get("no_docs") and is_server_error(run.get("response") or {})):
             continue
         latest[(run["qid"], run["config"])] = run
 
@@ -215,7 +239,8 @@ def main(bench_path, runs_path, out_dir="."):
     rows = []
     for (qid, cfg), run in sorted(latest.items()):
         b = bench[qid]
-        ans, col, ids = pipeline_answer(run["response"])
+        species_path = cfg.startswith("pipeline") and b.get("taxon_rank", "species") == "species"
+        ans, col, ids = (first_answer if species_path else pipeline_answer)(run["response"])
         gold_g = item_g[qid] if cfg.startswith("doc") else taxon_g[b["taxon"]]
         rows.append({"qid": qid, "config": cfg, "taxon": b["taxon"], "rank": b.get("taxon_rank", "species"),
                      "nonfungal": int(not (gold_g & {"fungivore", "microbivore"})),
@@ -227,13 +252,16 @@ def main(bench_path, runs_path, out_dir="."):
                      "pipeline": pipeline_outcome(ans, b["taxon"], gold_g, b.get("taxon_rank", "species")),
                      "answer": answer_outcome(ans, b["taxon"], gold_g),
                      "food_match": food_match(ans, b["gold_answer"]),
-                     "gold_retrieved": int(str(b["docid"]) in ids),
+                     "gold_retrieved": int(bool(run.get("gold_in_pipeline_ids"))) if species_path
+                     else int(str(b["docid"]) in ids),
                      "doc_ref_hit_gold": run.get("doc_ref_hit_gold"), "wall_s": run.get("wall_s")})
+        if cfg.startswith("pipeline"):
+            rows[-1].update(no_docs=int(bool(run.get("no_docs"))), n_pipeline_docs=len(run.get("pipeline_ids") or []))
 
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     with open(out / "scored_trophic.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(dict.fromkeys(k for r in rows for k in r)), restval="")
         w.writeheader()
         w.writerows(rows)
 
@@ -247,6 +275,9 @@ def main(bench_path, runs_path, out_dir="."):
         s["food_match"] = round(sum(r["food_match"] for r in rs) / n, 3)
         s["gold_retrieved"] = round(sum(r["gold_retrieved"] for r in rs) / n, 3)
         s["mean_wall_s"] = round(sum(r["wall_s"] or 0 for r in rs) / n, 2)
+        if rs[0]["config"].startswith("pipeline"):
+            s["no_docs"] = round(sum(r["no_docs"] for r in rs) / n, 3)
+            s["answer_collection"] = dict(sorted(Counter(r["answer_collection"] or "none" for r in rs).items()))
         return s
 
     summ = {}

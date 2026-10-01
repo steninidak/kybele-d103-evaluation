@@ -1,0 +1,126 @@
+{
+  "pipeline": {
+    "body_size": {
+      "n": 60,
+      "correct": 0.433,
+      "wrong": 0.033,
+      "no_answer": 0.533,
+      "geography": 0.0,
+      "top_correct": 0.433,
+      "gold_retrieved": 0.967,
+      "top_is_plazi": 0.75,
+      "mean_wall_s": 4.62,
+      "offset<=1500": {
+        "n": 48,
+        "correct": 0.417
+      },
+      "offset>1500": {
+        "n": 12,
+        "correct": 0.5
+      },
+      "stored": {
+        "n": 60,
+        "correct": 0.383,
+        "wrong": 0.0,
+        "no_answer": 0.617
+      },
+      "gold_in_pipeline_ids": 1.0,
+      "no_docs": 0.0,
+      "pipeline_collection": {
+        "medline": 15,
+        "plazi": 45
+      }
+    },
+    "habitat": {
+      "n": 55,
+      "correct": 0.455,
+      "wrong": 0.055,
+      "no_answer": 0.436,
+      "geography": 0.055,
+      "top_correct": 0.455,
+      "gold_retrieved": 0.945,
+      "top_is_plazi": 0.655,
+      "mean_wall_s": 5.08,
+      "offset<=1500": {
+        "n": 3,
+        "correct": 1.0
+      },
+      "offset>1500": {
+        "n": 52,
+        "correct": 0.423
+      },
+      "stored": {
+        "n": 55,
+        "correct": 0.418,
+        "wrong": 0.018,
+        "no_answer": 0.564
+      },
+      "gold_in_pipeline_ids": 0.982,
+      "no_docs": 0.018,
+      "pipeline_collection": {
+        "medline": 18,
+        "none": 1,
+        "plazi": 36
+      }
+    },
+    "trophic_guild": {
+      "n": 7,
+      "correct": 0.143,
+      "wrong": 0.0,
+      "no_answer": 0.857,
+      "geography": 0.0,
+      "top_correct": 0.143,
+      "gold_retrieved": 0.857,
+      "top_is_plazi": 0.571,
+      "mean_wall_s": 5.51,
+      "offset>1500": {
+        "n": 7,
+        "correct": 0.143
+      },
+      "stored": {
+        "n": 7,
+        "correct": 0.143,
+        "wrong": 0.0,
+        "no_answer": 0.857
+      },
+      "gold_in_pipeline_ids": 1.0,
+      "no_docs": 0.0,
+      "pipeline_collection": {
+        "medline": 3,
+        "plazi": 4
+      }
+    },
+    "all": {
+      "n": 122,
+      "correct": 0.426,
+      "wrong": 0.041,
+      "no_answer": 0.508,
+      "geography": 0.025,
+      "top_correct": 0.426,
+      "gold_retrieved": 0.951,
+      "top_is_plazi": 0.697,
+      "mean_wall_s": 4.88,
+      "offset<=1500": {
+        "n": 51,
+        "correct": 0.451
+      },
+      "offset>1500": {
+        "n": 71,
+        "correct": 0.408
+      },
+      "stored": {
+        "n": 122,
+        "correct": 0.385,
+        "wrong": 0.008,
+        "no_answer": 0.607
+      },
+      "gold_in_pipeline_ids": 0.992,
+      "no_docs": 0.008,
+      "pipeline_collection": {
+        "medline": 36,
+        "none": 1,
+        "plazi": 85
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+20:22:05 KYBELE D10.3 evaluation runner v6, output folder: ./trophic_pipeline
+20:22:05 [1/3] Using the curated question file supplied in this folder (no sampling needed)
+20:22:05 [2/3] Reusing 102 candidate questions from trophic_pipeline/candidates.csv
+20:22:05 [3/3] Querying the QA system ...
+20:22:05       QA service found at https://qa.sibils.org/api (ready=True, config={'generative_model': 'Qwen/Qwen3-8B-FP8', 'extractive_model': 'ktrapeznikov/biobert_v1.1_pubmed_squad_v2', 'inference_mode': 'gpu', 'use_vllm': True})
+20:22:05       configurations: pipeline
+20:22:05       0 of 102 runs already done; 102 to go (roughly 3 min)
+20:22:10       P001 pipeline               ok 4.97s, 6 docs
+20:22:14       P002 pipeline               ok 8.92s, 15 docs
+20:22:14       P003 pipeline               ok 4.38s, 2 docs
+20:22:16       P004 pipeline               no document contains the binomial
+20:22:20       P005 pipeline               ok 5.62s, 7 docs
+20:22:22       P006 pipeline               ok 5.39s, 7 docs
+20:22:26       P008 pipeline               ok 4.8s, 4 docs, gold among them
+20:22:29       P009 pipeline               no document contains the binomial
+20:22:30       P007 pipeline               ok 9.99s, 16 docs
+20:22:34       P010 pipeline               ok 5.26s, 4 docs, gold among them
+20:22:37       P011 pipeline               ok 7.18s, 9 docs, gold among them
+20:22:40       P012 pipeline               ok 5.39s, 9 docs, gold among them
+20:22:50       P013 pipeline               ok 12.86s, 18 docs
+20:22:51       P014 pipeline               ok 11.19s, 18 docs, gold among them
+20:22:58       P015 pipeline               ok 8.05s, 18 docs
+20:23:00       P016 pipeline               ok 9.46s, 18 docs
+20:23:04       P017 pipeline               ok 6.37s, 18 docs
+20:23:09       P018 pipeline               ok 8.57s, 18 docs
+20:23:13       P019 pipeline               ok 8.24s, 18 docs
+20:23:17       P020 pipeline               ok 7.79s, 18 docs, gold among them
+20:23:17       progress: 20/102 tasks, 1.2 min elapsed
+20:23:21       P021 pipeline               ok 8.04s, 18 docs
+20:23:24       P022 pipeline               ok 7.33s, 18 docs
+20:23:27       P023 pipeline               ok 6.63s, 18 docs, gold among them
+20:23:33       P024 pipeline               ok 8.59s, 18 docs
+20:23:36       P025 pipeline               ok 8.58s, 18 docs
+20:23:41       P026 pipeline               ok 8.69s, 18 docs
+20:23:44       P027 pipeline               ok 7.92s, 14 docs, gold among them
+20:23:45       P028 pipeline               ok 3.36s, 1 docs, gold among them
+20:23:47       P029 pipeline               ok 3.71s, 1 docs
+20:23:56       P031 pipeline               ok 8.33s, 14 docs
+20:23:57       P030 pipeline               ok 12.84s, 17 docs
+20:24:02       P032 pipeline               ok 5.96s, 14 docs, gold among them
+20:24:03       P033 pipeline               ok 6.03s, 4 docs, gold among them
+20:24:10       P034 pipeline               ok 8.15s, 11 docs
+20:24:11       P035 pipeline               ok 7.37s, 11 docs
+20:24:20       P036 pipeline               ok 9.7s, 15 docs
+20:24:20       P037 pipeline               ok 9.25s, 15 docs, gold among them
+20:24:25       P039 pipeline               ok 4.51s, 2 docs, gold among them
+20:24:27       P038 pipeline               ok 7.25s, 11 docs
+20:24:32       P040 pipeline               ok 7.75s, 12 docs, gold among them
+20:24:32       progress: 40/102 tasks, 2.5 min elapsed
+20:24:34       P041 pipeline               ok 7.27s, 9 docs
+20:24:36       P042 pipeline               ok 3.97s, 9 docs
+20:24:41       P043 pipeline               ok 6.97s, 13 docs
+20:24:42       P044 pipeline               ok 5.42s, 6 docs
+20:24:48       P045 pipeline               ok 7.01s, 8 docs
+20:24:53       P046 pipeline               ok 11.49s, 12 docs, gold among them
+20:24:55       P047 pipeline               ok 6.68s, 9 docs, gold among them
+20:24:57       P048 pipeline               ok 4.29s, 9 docs, gold among them
+20:25:00       P049 pipeline               ok 5.25s, 9 docs
+20:25:02       P050 pipeline               ok 4.79s, 9 docs
+20:25:05       P051 pipeline               ok 4.8s, 5 docs, gold among them
+20:25:07       P052 pipeline               ok 4.93s, 1 docs
+20:25:16       P053 pipeline               ok 11.21s, 18 docs, gold among them
+20:25:17       P054 pipeline               ok 9.37s, 18 docs
+20:25:23       P055 pipeline               ok 7.35s, 18 docs, gold among them
+20:25:24       P056 pipeline               ok 7.2s, 7 docs
+20:25:30       P057 pipeline               ok 6.83s, 11 docs, gold among them
+20:25:33       P058 pipeline               ok 9.12s, 17 docs
+20:25:35       P059 pipeline               ok 4.33s, 3 docs, gold among them
+20:25:44       P060 pipeline               ok 10.67s, 18 docs, gold among them
+20:25:44       progress: 60/102 tasks, 3.6 min elapsed
+20:25:44       P061 pipeline               ok 9.79s, 18 docs, gold among them
+20:25:53       P062 pipeline               ok 9.05s, 18 docs
+20:25:55       P063 pipeline               ok 10.22s, 14 docs, gold among them
+20:26:01       P064 pipeline               ok 8.58s, 14 docs
+20:26:02       P065 pipeline               ok 7.54s, 14 docs
+20:26:10       P066 pipeline               ok 8.76s, 14 docs, gold among them
+20:26:10       P067 pipeline               ok 8.31s, 14 docs
+20:26:17       P069 pipeline               ok 6.43s, 14 docs
+20:26:18       P068 pipeline               ok 8.02s, 14 docs
+20:26:23       P070 pipeline               ok 6.29s, 14 docs, gold among them
+20:26:27       P071 pipeline               ok 8.74s, 18 docs
+20:26:30       P072 pipeline               ok 6.82s, 18 docs, gold among them
+20:26:30       P073 pipeline               ok 3.68s, 1 docs
+20:26:37       P075 pipeline               ok 6.25s, 4 docs
+20:26:37       P074 pipeline               ok 7.45s, 11 docs, gold among them
+20:26:39       P076 pipeline               no document contains the binomial
+20:26:42       P078 pipeline               no document contains the binomial
+20:26:43       P077 pipeline               ok 5.53s, 3 docs, gold among them
+20:26:49       P079 pipeline               ok 7.84s, 13 docs
+20:26:50       P080 pipeline               ok 7.03s, 3 docs, gold among them
+20:26:50       progress: 80/102 tasks, 4.8 min elapsed
+20:26:53       P082 pipeline               ok 3.52s
+20:26:55       P081 pipeline               ok 5.77s, 2 docs, gold among them
+20:26:57       P083 pipeline               ok 4.01s
+20:27:00       P084 pipeline               ok 4.62s
+20:27:02       P085 pipeline               ok 4.29s
+20:27:03       P087 pipeline               ok 1.72s
+20:27:03       P086 pipeline               ok 3.69s
+20:27:08       P089 pipeline               ok 4.25s
+20:27:08       P090 pipeline               ok 0.22s
+20:27:08       P088 pipeline               ok 4.83s
+20:27:13       P091 pipeline               ok 5.22s
+20:27:14       P092 pipeline               ok 5.43s
+20:27:16       P093 pipeline               ok 3.17s
+20:27:16       P094 pipeline               ok 2.6s
+20:27:20       P096 pipeline               ok 3.7s
+20:27:21       P095 pipeline               ok 4.27s
+20:27:23       P097 pipeline               ok 2.7s
+20:27:23       P098 pipeline               ok 2.13s
+20:27:26       P099 pipeline               ok 2.89s
+20:27:26       P100 pipeline               ok 3.54s
+20:27:26       progress: 100/102 tasks, 5.4 min elapsed
+20:27:29       P101 pipeline               ok 3.7s
+20:27:30       P102 pipeline               ok 3.76s
+20:27:30       finished: 102 of 102 runs have a valid answer
+20:27:30 Done. Upload this file to the chat: ./trophic_pipeline_results.zip (0.2 MB)

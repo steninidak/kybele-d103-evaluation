@@ -1,0 +1,141 @@
+20:22:05 KYBELE D10.3 evaluation runner v6, output folder: ./traits_pipeline
+20:22:05 [1/3] Using the curated question file supplied in this folder (no sampling needed)
+20:22:05 [2/3] Reusing 126 candidate questions from traits_pipeline/candidates.csv
+20:22:05 [3/3] Querying the QA system ...
+20:22:05       QA service found at https://qa.sibils.org/api (ready=True, config={'generative_model': 'Qwen/Qwen3-8B-FP8', 'extractive_model': 'ktrapeznikov/biobert_v1.1_pubmed_squad_v2', 'inference_mode': 'gpu', 'use_vllm': True})
+20:22:05       configurations: pipeline
+20:22:05       0 of 126 runs already done; 126 to go (roughly 4 min)
+20:22:10       K001 pipeline               ok 4.71s, 2 docs, gold among them
+20:22:11       K003 pipeline               ok 6.0s, 4 docs, gold among them
+20:22:13       K005 pipeline               ok 3.87s, 1 docs, gold among them
+20:22:16       K007 pipeline               ok 5.04s, 4 docs, gold among them
+20:22:17       K011 pipeline               ok 4.03s, 2 docs, gold among them
+20:22:21       K012 pipeline               ok 5.07s, 3 docs, gold among them
+20:22:22       K014 pipeline               ok 4.9s, 3 docs, gold among them
+20:22:25       K019 pipeline               ok 3.89s, 2 docs, gold among them
+20:22:26       K021 pipeline               ok 3.9s, 1 docs, gold among them
+20:22:31       K026 pipeline               ok 4.68s, 1 docs, gold among them
+20:22:32       K025 pipeline               ok 6.67s, 3 docs, gold among them
+20:22:34       K029 pipeline               ok 3.44s, 1 docs, gold among them
+20:22:36       K030 pipeline               ok 4.31s, 4 docs, gold among them
+20:22:38       K037 pipeline               ok 3.76s, 1 docs, gold among them
+20:22:40       K044 pipeline               ok 4.63s, 4 docs, gold among them
+20:22:42       K047 pipeline               ok 3.75s, 2 docs, gold among them
+20:22:48       K049 pipeline               ok 7.31s, 3 docs, gold among them
+20:22:51       K051 pipeline               ok 9.33s, 4 docs, gold among them
+20:22:52       K053 pipeline               ok 3.86s, 1 docs, gold among them
+20:22:56       K059 pipeline               ok 4.84s, 2 docs, gold among them
+20:22:56       progress: 20/126 tasks, 0.9 min elapsed
+20:22:59       K058 pipeline               ok 7.95s, 3 docs, gold among them
+20:23:01       K064 pipeline               ok 4.46s, 3 docs, gold among them
+20:23:03       K068 pipeline               ok 3.52s, 1 docs, gold among them
+20:23:05       K069 pipeline               ok 3.73s, 1 docs, gold among them
+20:23:08       K070 pipeline               ok 5.16s, 2 docs, gold among them
+20:23:09       K072 pipeline               ok 4.68s, 1 docs, gold among them
+20:23:12       K074 pipeline               ok 3.73s, 1 docs, gold among them
+20:23:13       K077 pipeline               ok 3.51s, 1 docs, gold among them
+20:23:16       K082 pipeline               ok 3.94s, 2 docs, gold among them
+20:23:17       K085 pipeline               ok 4.12s, 1 docs, gold among them
+20:23:21       K087 pipeline               ok 5.64s, 2 docs, gold among them
+20:23:22       K091 pipeline               ok 4.74s, 4 docs, gold among them
+20:23:26       K094 pipeline               ok 3.95s, 1 docs, gold among them
+20:23:31       K101 pipeline               ok 4.94s, 3 docs, gold among them
+20:23:31       K093 pipeline               ok 9.83s, 13 docs, gold among them
+20:23:35       K105 pipeline               ok 4.14s, 1 docs, gold among them
+20:23:37       K112 pipeline               ok 5.65s, 2 docs, gold among them
+20:23:41       K117 pipeline               ok 4.84s, 3 docs, gold among them
+20:23:42       K113 pipeline               ok 7.2s, 3 docs, gold among them
+20:23:47       K119 pipeline               ok 5.02s, 3 docs, gold among them
+20:23:47       progress: 40/126 tasks, 1.7 min elapsed
+20:23:47       K121 pipeline               ok 4.98s, 4 docs, gold among them
+20:23:51       K123 pipeline               ok 4.09s, 3 docs, gold among them
+20:23:52       K124 pipeline               ok 5.16s, 4 docs, gold among them
+20:23:56       K129 pipeline               ok 5.55s, 3 docs, gold among them
+20:23:57       K135 pipeline               ok 4.94s, 1 docs, gold among them
+20:24:00       K136 pipeline               ok 4.23s, 1 docs, gold among them
+20:24:01       K137 pipeline               ok 4.25s, 1 docs, gold among them
+20:24:04       K138 pipeline               ok 3.76s, 1 docs, gold among them
+20:24:05       K147 pipeline               ok 3.75s, 2 docs, gold among them
+20:24:08       K149 pipeline               ok 3.72s, 1 docs, gold among them
+20:24:12       K150 pipeline               ok 6.5s, 4 docs, gold among them
+20:24:12       K151 pipeline               ok 3.88s, 1 docs, gold among them
+20:24:16       K153 pipeline               ok 4.31s, 3 docs, gold among them
+20:24:20       K152 pipeline               ok 8.89s, 1 docs, gold among them
+20:24:21       K154 pipeline               ok 4.72s, 4 docs, gold among them
+20:24:25       K156 pipeline               ok 4.31s, 1 docs, gold among them
+20:24:26       K155 pipeline               ok 5.33s, 3 docs, gold among them
+20:24:29       K157 pipeline               ok 3.65s, 2 docs, gold among them
+20:24:29       K158 pipeline               ok 3.51s, 1 docs, gold among them
+20:24:34       K161 pipeline               ok 4.32s, 1 docs, gold among them
+20:24:34       progress: 60/126 tasks, 2.5 min elapsed
+20:24:34       K160 pipeline               ok 5.74s, 4 docs, gold among them
+20:24:38       K163 pipeline               ok 3.94s, 2 docs, gold among them
+20:24:39       K162 pipeline               ok 5.81s, 7 docs, gold among them
+20:24:42       K164 pipeline               ok 4.07s, 1 docs, gold among them
+20:24:43       K165 pipeline               ok 3.95s, 1 docs, gold among them
+20:24:47       K167 pipeline               ok 4.08s, 1 docs, gold among them
+20:24:48       K166 pipeline               ok 5.8s, 3 docs, gold among them
+20:24:52       K168 pipeline               ok 4.21s, 2 docs, gold among them
+20:24:53       K169 pipeline               ok 4.25s, 1 docs, gold among them
+20:24:56       K171 pipeline               ok 3.46s, 1 docs, gold among them
+20:24:59       K170 pipeline               ok 7.14s, 6 docs, gold among them
+20:25:00       K174 pipeline               ok 4.49s, 4 docs, gold among them
+20:25:02       K175 pipeline               ok 3.08s, 1 docs, gold among them
+20:25:05       K176 pipeline               ok 4.65s, 3 docs, gold among them
+20:25:07       K177 pipeline               ok 4.85s, 5 docs, gold among them
+20:25:09       K178 pipeline               ok 3.45s, 1 docs, gold among them
+20:25:11       K179 pipeline               ok 4.03s, 2 docs, gold among them
+20:25:13       K180 pipeline               ok 3.93s, 2 docs, gold among them
+20:25:16       K181 pipeline               ok 4.9s, 1 docs, gold among them
+20:25:20       K183 pipeline               ok 4.23s, 2 docs, gold among them
+20:25:20       progress: 80/126 tasks, 3.3 min elapsed
+20:25:20       K182 pipeline               ok 7.71s, 12 docs, gold among them
+20:25:24       K188 pipeline               ok 4.0s, 2 docs, gold among them
+20:25:24       K184 pipeline               ok 4.64s, 2 docs, gold among them
+20:25:28       K190 pipeline               ok 3.48s, 1 docs, gold among them
+20:25:29       K191 pipeline               ok 4.51s, 3 docs, gold among them
+20:25:32       K192 pipeline               ok 4.67s, 5 docs, gold among them
+20:25:34       K193 pipeline               ok 4.71s, 2 docs, gold among them
+20:25:35       K194 pipeline               no document contains the binomial
+20:25:37       K197 pipeline               ok 3.71s, 2 docs, gold among them
+20:25:39       K198 pipeline               ok 3.98s, 1 docs, gold among them
+20:25:45       K199 pipeline               ok 7.31s, 3 docs, gold among them
+20:25:45       K200 pipeline               ok 6.47s, 2 docs, gold among them
+20:25:50       K202 pipeline               ok 5.19s, 2 docs, gold among them
+20:25:55       K203 pipeline               ok 9.77s, 5 docs, gold among them
+20:25:56       K204 pipeline               ok 5.68s, 2 docs, gold among them
+20:26:03       K206 pipeline               ok 6.93s, 3 docs, gold among them
+20:26:03       K205 pipeline               ok 7.67s, 4 docs, gold among them
+20:26:06       K207 pipeline               ok 3.89s, 1 docs, gold among them
+20:26:07       K208 pipeline               ok 4.02s, 1 docs, gold among them
+20:26:11       K209 pipeline               ok 4.36s, 2 docs, gold among them
+20:26:11       progress: 100/126 tasks, 4.1 min elapsed
+20:26:12       K210 pipeline               ok 5.35s, 3 docs, gold among them
+20:26:17       K212 pipeline               ok 5.06s, 1 docs, gold among them
+20:26:19       K211 pipeline               ok 7.82s, 3 docs, gold among them
+20:26:22       K214 pipeline               ok 4.54s, 3 docs, gold among them
+20:26:23       K215 pipeline               ok 4.11s, 1 docs, gold among them
+20:26:27       K218 pipeline               ok 4.59s, 1 docs, gold among them
+20:26:29       K216 pipeline               ok 6.97s, 3 docs, gold among them
+20:26:31       K219 pipeline               ok 3.59s, 1 docs, gold among them
+20:26:33       K220 pipeline               ok 4.4s, 2 docs, gold among them
+20:26:35       K221 pipeline               ok 4.37s, 1 docs, gold among them
+20:26:38       K223 pipeline               ok 4.42s, 1 docs, gold among them
+20:26:41       K225 pipeline               ok 6.25s, 11 docs
+20:26:42       K226 pipeline               ok 4.84s, 1 docs, gold among them
+20:26:46       K228 pipeline               ok 4.33s, 2 docs, gold among them
+20:26:47       K229 pipeline               ok 4.74s, 4 docs, gold among them
+20:26:51       K231 pipeline               ok 4.27s, 1 docs, gold among them
+20:26:54       K230 pipeline               ok 8.11s, 8 docs, gold among them
+20:26:56       K232 pipeline               ok 4.16s, 2 docs, gold among them
+20:26:58       K233 pipeline               ok 4.51s, 1 docs, gold among them
+20:27:00       K235 pipeline               ok 4.52s, 2 docs, gold among them
+20:27:00       progress: 120/126 tasks, 4.9 min elapsed
+20:27:04       K236 pipeline               ok 5.3s, 3 docs, gold among them
+20:27:06       K237 pipeline               ok 5.65s, 2 docs, gold among them
+20:27:11       K238 pipeline               ok 6.82s, 2 docs, gold among them
+20:27:11       K244 pipeline               ok 5.31s, 3 docs, gold among them
+20:27:16       K247 pipeline               ok 5.11s, 2 docs, gold among them
+20:27:17       K248 pipeline               ok 5.88s, 6 docs, gold among them
+20:27:17       finished: 126 of 126 runs have a valid answer
+20:27:17 Done. Upload this file to the chat: ./traits_pipeline_results.zip (0.1 MB)

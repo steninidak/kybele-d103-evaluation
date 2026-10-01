@@ -1,0 +1,116 @@
+02:25:50 KYBELE D10.3 evaluation runner v6, output folder: ./trophic_pipeline_extractive
+02:25:50 [1/3] Using the curated question file supplied in this folder (no sampling needed)
+02:25:50 [2/3] Reusing 102 candidate questions from trophic_pipeline_extractive/candidates.csv
+02:25:50 [3/3] Querying the QA system ...
+02:25:50       QA service found at https://qa.sibils.org/api (ready=True, config={'generative_model': 'Qwen/Qwen3-8B-FP8', 'extractive_model': 'ktrapeznikov/biobert_v1.1_pubmed_squad_v2', 'inference_mode': 'gpu', 'use_vllm': True})
+02:25:50       configurations: pipeline_extractive
+02:25:50       0 of 102 runs already done; 102 to go (roughly 3 min)
+02:25:58       P001 pipeline_extractive    ok 8.32s, 6 docs
+02:26:04       P003 pipeline_extractive    ok 5.33s, 2 docs
+02:26:04       P002 pipeline_extractive    ok 13.7s, 15 docs
+02:26:06       P004 pipeline_extractive    no document contains the binomial
+02:26:13       P005 pipeline_extractive    ok 9.21s, 7 docs
+02:26:13       P006 pipeline_extractive    ok 7.11s, 7 docs
+02:26:20       P008 pipeline_extractive    ok 7.16s, 4 docs, gold among them
+02:26:23       P009 pipeline_extractive    no document contains the binomial
+02:26:26       P007 pipeline_extractive    ok 13.35s, 16 docs
+02:26:29       P010 pipeline_extractive    ok 5.83s, 4 docs, gold among them
+02:26:35       P011 pipeline_extractive    ok 8.64s, 9 docs, gold among them
+02:26:38       P012 pipeline_extractive    ok 8.99s, 9 docs, gold among them
+02:26:51       P013 pipeline_extractive    ok 16.47s, 18 docs
+02:26:53       P014 pipeline_extractive    ok 15.41s, 18 docs, gold among them
+02:27:05       P015 pipeline_extractive    ok 14.15s, 18 docs
+02:27:08       P016 pipeline_extractive    ok 14.51s, 18 docs
+02:27:23       P017 pipeline_extractive    ok 17.23s, 18 docs
+02:27:25       P018 pipeline_extractive    ok 17.1s, 18 docs
+02:27:40       P019 pipeline_extractive    ok 16.92s, 18 docs
+02:27:42       P020 pipeline_extractive    ok 16.76s, 18 docs, gold among them
+02:27:42       progress: 20/102 tasks, 1.9 min elapsed
+02:27:56       P021 pipeline_extractive    ok 16.03s, 18 docs
+02:27:58       P022 pipeline_extractive    ok 16.76s, 18 docs
+02:28:10       P023 pipeline_extractive    ok 14.06s, 18 docs, gold among them
+02:28:13       P024 pipeline_extractive    ok 14.98s, 18 docs
+02:28:25       P025 pipeline_extractive    ok 15.61s, 18 docs
+02:28:29       P026 pipeline_extractive    ok 15.57s, 18 docs
+02:28:33       P028 pipeline_extractive    ok 3.89s, 1 docs, gold among them
+02:28:36       P027 pipeline_extractive    ok 10.72s, 14 docs, gold among them
+02:28:36       P029 pipeline_extractive    ok 3.4s, 1 docs
+02:28:47       P031 pipeline_extractive    ok 10.67s, 14 docs
+02:28:51       P030 pipeline_extractive    ok 14.82s, 17 docs
+02:28:56       P032 pipeline_extractive    ok 8.66s, 14 docs, gold among them
+02:28:56       P033 pipeline_extractive    ok 5.56s, 4 docs, gold among them
+02:29:06       P034 pipeline_extractive    ok 9.99s, 11 docs
+02:29:06       P035 pipeline_extractive    ok 9.38s, 11 docs
+02:29:17       P036 pipeline_extractive    ok 11.53s, 15 docs
+02:29:18       P037 pipeline_extractive    ok 12.42s, 15 docs, gold among them
+02:29:22       P039 pipeline_extractive    ok 4.12s, 2 docs, gold among them
+02:29:26       P038 pipeline_extractive    ok 9.3s, 11 docs
+02:29:32       P040 pipeline_extractive    ok 9.92s, 12 docs, gold among them
+02:29:32       progress: 40/102 tasks, 3.7 min elapsed
+02:29:34       P041 pipeline_extractive    ok 7.23s, 9 docs
+02:29:37       P042 pipeline_extractive    ok 4.9s, 9 docs
+02:29:42       P043 pipeline_extractive    ok 8.11s, 13 docs
+02:29:44       P044 pipeline_extractive    ok 6.75s, 6 docs
+02:29:51       P045 pipeline_extractive    ok 9.2s, 8 docs
+02:29:53       P046 pipeline_extractive    ok 9.27s, 12 docs, gold among them
+02:30:02       P047 pipeline_extractive    ok 11.26s, 9 docs, gold among them
+02:30:03       P048 pipeline_extractive    ok 10.22s, 9 docs, gold among them
+02:30:10       P049 pipeline_extractive    ok 7.73s, 9 docs
+02:30:11       P050 pipeline_extractive    ok 7.76s, 9 docs
+02:30:14       P052 pipeline_extractive    ok 3.16s, 1 docs
+02:30:15       P051 pipeline_extractive    ok 4.78s, 5 docs, gold among them
+02:30:31       P053 pipeline_extractive    ok 17.14s, 18 docs, gold among them
+02:30:32       P054 pipeline_extractive    ok 16.85s, 18 docs
+02:30:38       P056 pipeline_extractive    ok 6.77s, 7 docs
+02:30:45       P055 pipeline_extractive    ok 13.24s, 18 docs, gold among them
+02:30:47       P057 pipeline_extractive    ok 8.38s, 11 docs, gold among them
+02:30:51       P059 pipeline_extractive    ok 4.26s, 3 docs, gold among them
+02:30:59       P058 pipeline_extractive    ok 14.42s, 17 docs
+02:31:05       P060 pipeline_extractive    ok 13.5s, 18 docs, gold among them
+02:31:05       progress: 60/102 tasks, 5.2 min elapsed
+02:31:11       P061 pipeline_extractive    ok 12.0s, 18 docs, gold among them
+02:31:16       P062 pipeline_extractive    ok 11.44s, 18 docs
+02:31:20       P063 pipeline_extractive    ok 9.05s, 14 docs, gold among them
+02:31:24       P064 pipeline_extractive    ok 7.81s, 14 docs
+02:31:29       P065 pipeline_extractive    ok 8.38s, 14 docs
+02:31:32       P066 pipeline_extractive    ok 8.19s, 14 docs, gold among them
+02:31:36       P067 pipeline_extractive    ok 7.9s, 14 docs
+02:31:40       P068 pipeline_extractive    ok 7.75s, 14 docs
+02:31:44       P069 pipeline_extractive    ok 7.27s, 14 docs
+02:31:48       P070 pipeline_extractive    ok 7.91s, 14 docs, gold among them
+02:31:58       P071 pipeline_extractive    ok 14.72s, 18 docs
+02:31:59       P072 pipeline_extractive    ok 11.34s, 18 docs, gold among them
+02:32:02       P073 pipeline_extractive    ok 3.54s, 1 docs
+02:32:07       P074 pipeline_extractive    ok 8.32s, 11 docs, gold among them
+02:32:08       P075 pipeline_extractive    ok 5.63s, 4 docs
+02:32:10       P076 pipeline_extractive    no document contains the binomial
+02:32:12       P077 pipeline_extractive    ok 4.33s, 3 docs, gold among them
+02:32:12       P078 pipeline_extractive    no document contains the binomial
+02:32:16       P080 pipeline_extractive    ok 4.27s, 3 docs, gold among them
+02:32:19       P079 pipeline_extractive    ok 6.98s, 13 docs
+02:32:19       progress: 80/102 tasks, 6.5 min elapsed
+02:32:22       P081 pipeline_extractive    ok 5.34s, 2 docs, gold among them
+02:32:25       P082 pipeline_extractive    ok 5.78s
+02:32:28       P083 pipeline_extractive    ok 6.43s
+02:32:31       P084 pipeline_extractive    ok 6.71s
+02:32:34       P085 pipeline_extractive    ok 6.13s
+02:32:37       P086 pipeline_extractive    ok 5.16s
+02:32:37       P087 pipeline_extractive    ok 2.21s
+02:32:44       P088 pipeline_extractive    ok 7.37s
+02:32:44       P089 pipeline_extractive    ok 7.42s
+02:32:44       P090 pipeline_extractive    ok 0.2s
+02:32:51       P091 pipeline_extractive    ok 7.45s
+02:32:52       P092 pipeline_extractive    ok 7.45s
+02:32:56       P094 pipeline_extractive    ok 4.01s
+02:32:56       P093 pipeline_extractive    ok 4.17s
+02:33:03       P095 pipeline_extractive    ok 7.08s
+02:33:03       P096 pipeline_extractive    ok 7.1s
+02:33:07       P098 pipeline_extractive    ok 4.08s
+02:33:07       P097 pipeline_extractive    ok 4.1s
+02:33:13       P100 pipeline_extractive    ok 6.21s
+02:33:14       P099 pipeline_extractive    ok 6.84s
+02:33:14       progress: 100/102 tasks, 7.4 min elapsed
+02:33:20       P101 pipeline_extractive    ok 7.07s
+02:33:20       P102 pipeline_extractive    ok 6.59s
+02:33:20       finished: 102 of 102 runs have a valid answer
+02:33:20 Done. Upload this file to the chat: ./trophic_pipeline_extractive_results.zip (0.2 MB)

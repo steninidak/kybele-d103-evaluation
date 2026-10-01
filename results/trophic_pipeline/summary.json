@@ -1,0 +1,45 @@
+{
+  "pipeline": {
+    "n": 98,
+    "errors": 0,
+    "plazi_answered": 0.8877551020408163,
+    "plazi_em": 0.0,
+    "plazi_em_ci95": [
+      0.0,
+      0.0
+    ],
+    "plazi_contains": 0.04081632653061224,
+    "plazi_contains_ci95": [
+      0.01020408163265306,
+      0.08163265306122448
+    ],
+    "plazi_f1": 0.018929863261476047,
+    "plazi_f1_ci95": [
+      0.01389629678622361,
+      0.024702417816624484
+    ],
+    "plazi_rougeL": 0.017879400758878065,
+    "plazi_faith": null,
+    "top_em": 0.0,
+    "top_contains": 0.3469387755102041,
+    "top_f1": 0.04200221261920998,
+    "gold_retrieved": 0.030612244897959183,
+    "gold_retrieved_ci95": [
+      0,
+      0.07142857142857142
+    ],
+    "gold_answer_doc": 0.030612244897959183,
+    "top_is_plazi": 0.04081632653061224,
+    "mean_pipeline_time_s": 3.6252551020408164,
+    "mean_wall_s": 6.527857142857143,
+    "by_question_type": {
+      "trophic_guild": {
+        "n": 98,
+        "plazi_em": 0.0,
+        "plazi_contains": 0.04081632653061224,
+        "plazi_f1": 0.018929863261476047,
+        "gold_retrieved": 0.030612244897959183
+      }
+    }
+  }
+}

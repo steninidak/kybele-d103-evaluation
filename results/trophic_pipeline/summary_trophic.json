@@ -1,0 +1,429 @@
+{
+  "baselines": {
+    "constant 'fungi' (doc gold)": 0.627,
+    "constant 'fungi' (e2e gold)": 0.745,
+    "constant 'fungi and decaying plant litter' (doc gold)": 0.745,
+    "constant 'fungi and decaying plant litter' (e2e gold)": 0.843
+  },
+  "pipeline": {
+    "all": {
+      "n": 102,
+      "pipeline": {
+        "correct": 0.559,
+        "wrong": 0.039,
+        "no_answer": 0.402,
+        "correct_ci95": [
+          0.462,
+          0.651
+        ]
+      },
+      "answer": {
+        "correct": 0.686,
+        "wrong": 0.039,
+        "no_answer": 0.275,
+        "correct_ci95": [
+          0.591,
+          0.768
+        ]
+      },
+      "food_match": 0.333,
+      "gold_retrieved": 0.412,
+      "mean_wall_s": 6.37,
+      "no_docs": 0.039,
+      "answer_collection": {
+        "medline": 73,
+        "none": 4,
+        "plazi": 4,
+        "pmc": 21
+      }
+    },
+    "rank=species": {
+      "n": 81,
+      "pipeline": {
+        "correct": 0.457,
+        "wrong": 0.037,
+        "no_answer": 0.506,
+        "correct_ci95": [
+          0.353,
+          0.565
+        ]
+      },
+      "answer": {
+        "correct": 0.617,
+        "wrong": 0.037,
+        "no_answer": 0.346,
+        "correct_ci95": [
+          0.508,
+          0.716
+        ]
+      },
+      "food_match": 0.296,
+      "gold_retrieved": 0.395,
+      "mean_wall_s": 7.1,
+      "no_docs": 0.049,
+      "answer_collection": {
+        "medline": 73,
+        "none": 4,
+        "plazi": 4
+      }
+    },
+    "rank=genus": {
+      "n": 21,
+      "pipeline": {
+        "correct": 0.952,
+        "wrong": 0.048,
+        "no_answer": 0.0,
+        "correct_ci95": [
+          0.773,
+          0.992
+        ]
+      },
+      "answer": {
+        "correct": 0.952,
+        "wrong": 0.048,
+        "no_answer": 0.0,
+        "correct_ci95": [
+          0.773,
+          0.992
+        ]
+      },
+      "food_match": 0.476,
+      "gold_retrieved": 0.476,
+      "mean_wall_s": 3.54,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "pmc": 21
+      }
+    },
+    "hedged=0": {
+      "n": 84,
+      "pipeline": {
+        "correct": 0.56,
+        "wrong": 0.048,
+        "no_answer": 0.393,
+        "correct_ci95": [
+          0.453,
+          0.661
+        ]
+      },
+      "answer": {
+        "correct": 0.702,
+        "wrong": 0.048,
+        "no_answer": 0.25,
+        "correct_ci95": [
+          0.598,
+          0.79
+        ]
+      },
+      "food_match": 0.321,
+      "gold_retrieved": 0.405,
+      "mean_wall_s": 6.75,
+      "no_docs": 0.024,
+      "answer_collection": {
+        "medline": 67,
+        "none": 2,
+        "plazi": 2,
+        "pmc": 13
+      }
+    },
+    "hedged=1": {
+      "n": 18,
+      "pipeline": {
+        "correct": 0.556,
+        "wrong": 0.0,
+        "no_answer": 0.444,
+        "correct_ci95": [
+          0.337,
+          0.754
+        ]
+      },
+      "answer": {
+        "correct": 0.611,
+        "wrong": 0.0,
+        "no_answer": 0.389,
+        "correct_ci95": [
+          0.386,
+          0.797
+        ]
+      },
+      "food_match": 0.389,
+      "gold_retrieved": 0.444,
+      "mean_wall_s": 4.59,
+      "no_docs": 0.111,
+      "answer_collection": {
+        "medline": 6,
+        "none": 2,
+        "plazi": 2,
+        "pmc": 8
+      }
+    },
+    "evidence=lab": {
+      "n": 37,
+      "pipeline": {
+        "correct": 0.622,
+        "wrong": 0.081,
+        "no_answer": 0.297,
+        "correct_ci95": [
+          0.461,
+          0.759
+        ]
+      },
+      "answer": {
+        "correct": 0.838,
+        "wrong": 0.027,
+        "no_answer": 0.135,
+        "correct_ci95": [
+          0.689,
+          0.923
+        ]
+      },
+      "food_match": 0.514,
+      "gold_retrieved": 0.622,
+      "mean_wall_s": 7.56,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "medline": 35,
+        "plazi": 1,
+        "pmc": 1
+      }
+    },
+    "evidence=literature": {
+      "n": 34,
+      "pipeline": {
+        "correct": 0.706,
+        "wrong": 0.029,
+        "no_answer": 0.265,
+        "correct_ci95": [
+          0.538,
+          0.832
+        ]
+      },
+      "answer": {
+        "correct": 0.824,
+        "wrong": 0.059,
+        "no_answer": 0.118,
+        "correct_ci95": [
+          0.665,
+          0.917
+        ]
+      },
+      "food_match": 0.206,
+      "gold_retrieved": 0.235,
+      "mean_wall_s": 6.33,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "medline": 21,
+        "plazi": 1,
+        "pmc": 12
+      }
+    },
+    "evidence=isotope": {
+      "n": 17,
+      "pipeline": {
+        "correct": 0.294,
+        "wrong": 0.0,
+        "no_answer": 0.706,
+        "correct_ci95": [
+          0.133,
+          0.531
+        ]
+      },
+      "answer": {
+        "correct": 0.294,
+        "wrong": 0.059,
+        "no_answer": 0.647,
+        "correct_ci95": [
+          0.133,
+          0.531
+        ]
+      },
+      "food_match": 0.118,
+      "gold_retrieved": 0.235,
+      "mean_wall_s": 4.98,
+      "no_docs": 0.235,
+      "answer_collection": {
+        "medline": 8,
+        "none": 4,
+        "plazi": 2,
+        "pmc": 3
+      }
+    },
+    "evidence=gut": {
+      "n": 7,
+      "pipeline": {
+        "correct": 0.429,
+        "wrong": 0.0,
+        "no_answer": 0.571,
+        "correct_ci95": [
+          0.158,
+          0.75
+        ]
+      },
+      "answer": {
+        "correct": 0.429,
+        "wrong": 0.0,
+        "no_answer": 0.571,
+        "correct_ci95": [
+          0.158,
+          0.75
+        ]
+      },
+      "food_match": 0.429,
+      "gold_retrieved": 0.429,
+      "mean_wall_s": 5.48,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "medline": 4,
+        "pmc": 3
+      }
+    },
+    "evidence=field": {
+      "n": 7,
+      "pipeline": {
+        "correct": 0.286,
+        "wrong": 0.0,
+        "no_answer": 0.714,
+        "correct_ci95": [
+          0.082,
+          0.641
+        ]
+      },
+      "answer": {
+        "correct": 0.429,
+        "wrong": 0.0,
+        "no_answer": 0.571,
+        "correct_ci95": [
+          0.158,
+          0.75
+        ]
+      },
+      "food_match": 0.429,
+      "gold_retrieved": 0.571,
+      "mean_wall_s": 4.54,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "medline": 5,
+        "pmc": 2
+      }
+    },
+    "collection=pmc": {
+      "n": 72,
+      "pipeline": {
+        "correct": 0.542,
+        "wrong": 0.014,
+        "no_answer": 0.444,
+        "correct_ci95": [
+          0.427,
+          0.652
+        ]
+      },
+      "answer": {
+        "correct": 0.639,
+        "wrong": 0.028,
+        "no_answer": 0.333,
+        "correct_ci95": [
+          0.524,
+          0.74
+        ]
+      },
+      "food_match": 0.278,
+      "gold_retrieved": 0.278,
+      "mean_wall_s": 6.06,
+      "no_docs": 0.056,
+      "answer_collection": {
+        "medline": 45,
+        "none": 4,
+        "plazi": 4,
+        "pmc": 19
+      }
+    },
+    "collection=medline": {
+      "n": 26,
+      "pipeline": {
+        "correct": 0.654,
+        "wrong": 0.077,
+        "no_answer": 0.269,
+        "correct_ci95": [
+          0.462,
+          0.806
+        ]
+      },
+      "answer": {
+        "correct": 0.885,
+        "wrong": 0.038,
+        "no_answer": 0.077,
+        "correct_ci95": [
+          0.71,
+          0.96
+        ]
+      },
+      "food_match": 0.538,
+      "gold_retrieved": 0.731,
+      "mean_wall_s": 7.52,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "medline": 26
+      }
+    },
+    "collection=plazi": {
+      "n": 4,
+      "pipeline": {
+        "correct": 0.25,
+        "wrong": 0.25,
+        "no_answer": 0.5,
+        "correct_ci95": [
+          0.046,
+          0.699
+        ]
+      },
+      "answer": {
+        "correct": 0.25,
+        "wrong": 0.25,
+        "no_answer": 0.5,
+        "correct_ci95": [
+          0.046,
+          0.699
+        ]
+      },
+      "food_match": 0.0,
+      "gold_retrieved": 0.75,
+      "mean_wall_s": 4.44,
+      "no_docs": 0.0,
+      "answer_collection": {
+        "medline": 2,
+        "pmc": 2
+      }
+    },
+    "nonfungal=1": {
+      "n": 26,
+      "pipeline": {
+        "correct": 0.346,
+        "wrong": 0.115,
+        "no_answer": 0.538,
+        "correct_ci95": [
+          0.194,
+          0.538
+        ]
+      },
+      "answer": {
+        "correct": 0.462,
+        "wrong": 0.115,
+        "no_answer": 0.423,
+        "correct_ci95": [
+          0.288,
+          0.645
+        ]
+      },
+      "food_match": 0.308,
+      "gold_retrieved": 0.462,
+      "mean_wall_s": 5.49,
+      "no_docs": 0.115,
+      "answer_collection": {
+        "medline": 15,
+        "none": 3,
+        "plazi": 1,
+        "pmc": 7
+      }
+    }
+  }
+}

@@ -17,12 +17,23 @@ kybele_d103); every stage is resumable, so re-run the same command after an inte
      it can be curated first.
   2. QA. Sends every question to the QA API (POST {base}/qa/multi, default base
      https://qa.sibils.org/api, falling back to https://qa.dev.sibils.org/api if the first
-     does not answer; override with --qa-base) in five configurations (CONFIGS):
+     does not answer; override with --qa-base) in six configurations (CONFIGS; choose a
+     subset with --configs):
         doc_extractive          gold treatment supplied via doc_refs, extractive reader
         doc_generative          gold treatment supplied via doc_refs, generative model
         e2e_sparse_extractive   sparse (BM25) retrieval, extractive reader
         e2e_sparse_generative   sparse retrieval, generative model (the API default)
         e2e_dense_generative    dense retrieval, generative model
+        pipeline                the request path of the KYBELE trait-mining pipeline
+                                (github.com/ecsltae/collembola-trait-mining, PIPELINE_COMMIT):
+                                species: phrase search for the binomial in Medline, PMC and
+                                Plazi (6 hits each, trait terms as a should-clause), then
+                                POST {base}/qa, generative, with those IDs as doc_refs; no
+                                document means no answer, as in the pipeline. Genus: POST
+                                {base}/qa, generative, sparse retrieval, as its genus batch.
+        pipeline_extractive     the same request path with the extractive reader, for a paired
+                                comparison of the two readers on the pipeline's own documents
+                                (not part of the pipeline; run it with --configs)
      One JSON line per (question, configuration) is appended to runs.jsonl; failed requests
      and empty server responses are retried on the next run.
   3. Packaging. Writes <out>_results.zip (treatments.jsonl if present, candidates.csv,
@@ -99,9 +110,29 @@ CONFIGS = [
     ("doc_extractive", {"mode": "extractive"}),
     ("doc_generative", {"mode": "generative"}),
     ("e2e_sparse_extractive", {"mode": "extractive", "retrieval": "sparse"}),
-    ("e2e_sparse_generative", {"mode": "generative", "retrieval": "sparse"}),  # API default; used by trait mining
+    ("e2e_sparse_generative", {"mode": "generative", "retrieval": "sparse"}),  # API default; the pipeline's genus batch
     ("e2e_dense_generative", {"mode": "generative", "retrieval": "dense"}),
+    ("pipeline", {"mode": "generative"}),  # the trait-mining pipeline's own request path, see run_pipeline()
+    ("pipeline_extractive", {"mode": "extractive"}),  # the same documents, read by the extractive reader
 ]
+
+# The trait-mining pipeline reproduced by the "pipeline" configuration. The constants below are
+# copied from scripts/collembola_species_traits.py (phrase_search_ids, query_qa_docrefs) and
+# scripts/collembola_trophic_batch.py (query_biomoqa) at this commit; check_pipeline_sync.py
+# compares them with the upstream file.
+PIPELINE_COMMIT = "1d5b5b62ab8fa6c13e5097701affdbba442c8764"
+PIPELINE_TRAIT_TERMS = {
+    "trophic": "feed diet food prey feeding fungi bacteria algae detritus",
+    "size":    "body length size mm millimetre measurement",
+    "habitat": "habitat soil litter moss cave forest inhabits found lives",
+}
+PIPELINE_COL_FIELDS = {
+    "medline": ["title", "abstract", "keywords"],
+    "pmc":     ["title", "abstract", "keywords"],
+    "plazi":   ["treatment_title", "text", "title"],
+}
+PIPELINE_N = 6
+PIPELINE_TRAIT_KEY = {"body_size": "size", "habitat": "habitat", "trophic_guild": "trophic"}
 
 _print_lock = threading.Lock()
 _write_lock = threading.Lock()
@@ -434,7 +465,7 @@ def load_done(path):
                     r = json.loads(line)
                 except ValueError:
                     continue
-                if not r.get("error") and not is_server_error(r.get("response") or {}):
+                if not r.get("error") and (r.get("no_docs") or not is_server_error(r.get("response") or {})):
                     done[(r["qid"], r["config"])] = r
     return done
 
@@ -451,11 +482,11 @@ def is_server_error(resp):
             and resp.get("pipeline_time") is None)
 
 
-def ask(base, payload, attempts=2):
+def ask(base, payload, attempts=2, endpoint="/qa/multi"):
     last = None
     for i in range(attempts):
         t0 = time.time()
-        resp = http_json(base + "/qa/multi", payload=payload, timeout=300, retries=2)
+        resp = http_json(base + endpoint, payload=payload, timeout=300, retries=2)
         wall = round(time.time() - t0, 2)
         if not is_server_error(resp):
             resp["_qa_base"] = base
@@ -465,18 +496,18 @@ def ask(base, payload, attempts=2):
     raise RuntimeError(last)
 
 
-def run_doc_pair(base, row, runs_path, done, logf):
+def run_doc_pair(base, row, runs_path, done, logf, names=None):
     """doc_extractive first to find a doc_ref that resolves to the gold treatment, then doc_generative."""
     gold = str(row["docid"])
     ref_used = None
-    need = [c for c, _ in CONFIGS[:2] if (row["qid"], c) not in done]
+    need = [c for c, _ in CONFIGS[:2] if (row["qid"], c) not in done and (not names or c in names)]
     if not need:
         return 0
     prev = done.get((row["qid"], "doc_extractive"))
     candidates = [prev["doc_ref"]] if prev and prev.get("doc_ref") else [gold, row["treatment_title"], row["species"]]
     n = 0
     for cfg, params in CONFIGS[:2]:
-        if (row["qid"], cfg) in done:
+        if (row["qid"], cfg) in done or cfg not in need:
             continue
         tried = candidates if ref_used is None else [ref_used]
         rec = None
@@ -518,27 +549,103 @@ def run_e2e(base, row, cfg, params, runs_path, logf):
     return 1
 
 
-def stage_qa(out, rows, workers, logf):
+def phrase_search_ids(binomial, trait_key, n=PIPELINE_N):
+    """Document IDs that contain the full binomial as a phrase, ranked by trait relevance, across
+    Medline, PMC and Plazi (collembola_species_traits.phrase_search_ids). A failed collection is
+    reported instead of skipped, so that a network error is not mistaken for an empty result."""
+    ids, failed = [], []
+    for col, fields in PIPELINE_COL_FIELDS.items():
+        esq = {"query": {"bool": {
+            "must": [{"multi_match": {"query": binomial, "type": "phrase", "fields": fields}}],
+            "should": [{"multi_match": {"query": PIPELINE_TRAIT_TERMS[trait_key], "fields": fields}}],
+        }}}
+        url = SEARCH_URL + "?" + urllib.parse.urlencode({"col": col, "n": n})
+        body = urllib.parse.urlencode({"jq": json.dumps(esq)}).encode("utf-8")
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(url, data=body, headers={
+                    "User-Agent": UA, "Accept": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded"})
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    d = json.loads(r.read().decode("utf-8", "replace"))
+                for h in ((d.get("elastic_output") or {}).get("hits") or {}).get("hits") or []:
+                    if h.get("_id"):
+                        ids.append(str(h["_id"]))
+                break
+            except Exception:
+                if attempt == 2:
+                    failed.append(col)
+                else:
+                    time.sleep(5 * (attempt + 1))
+    return list(dict.fromkeys(ids)), failed
+
+
+def run_pipeline(base, row, runs_path, logf, cfg="pipeline"):
+    """The trait-mining pipeline's request path (see CONFIGS and the module docstring)."""
+    mode = dict(CONFIGS)[cfg]["mode"]
+    rank = row.get("taxon_rank") or "species"
+    rec = {"qid": row["qid"], "config": cfg, "taxon_rank": rank, "wall_s": None, "error": ""}
+    try:
+        if rank == "genus":
+            payload = {"question": row["question"], "mode": mode, "retrieval": "sparse"}
+            resp, wall = ask(base, payload, endpoint="/qa")
+            rec.update(pipeline_path="genus_batch", wall_s=wall, response=trim_response(resp))
+            status = f"ok {wall}s"
+        else:
+            trait_key = PIPELINE_TRAIT_KEY[row["question_type"]]
+            t0 = time.time()
+            ids, failed = phrase_search_ids(row["species"], trait_key)
+            if failed:
+                raise RuntimeError("phrase search failed for " + ",".join(failed))
+            rec.update(pipeline_path="species_phrase_docrefs", pipeline_ids=ids,
+                       gold_in_pipeline_ids=str(row["docid"]) in ids)
+            if not ids:
+                # The pipeline leaves the trait blank when no document contains the binomial.
+                rec.update(no_docs=True, wall_s=round(time.time() - t0, 2),
+                           response={"collection_results": [], "model": None, "pipeline_time": None})
+                status = "no document contains the binomial"
+            else:
+                payload = {"question": row["question"], "mode": mode, "doc_refs": ids}
+                resp, wall = ask(base, payload, endpoint="/qa")
+                rec.update(wall_s=round(time.time() - t0, 2), response=trim_response(resp))
+                status = f"ok {rec['wall_s']}s, {len(ids)} docs" + (", gold among them" if rec["gold_in_pipeline_ids"] else "")
+    except Exception as e:
+        rec["error"] = str(e)
+        status = "ERROR " + str(e)[:80]
+    append_run(runs_path, rec)
+    log(f"      {row['qid']} {cfg:22s} {status}", logf)
+    return 1
+
+
+def stage_qa(out, rows, workers, logf, configs=None):
     runs_path = os.path.join(out, "runs.jsonl")
     log("[3/3] Querying the QA system ...", logf)
     base = find_qa_base(logf)
     if not base:
         log("      Could not reach the QA service at qa.sibils.org. Check your connection or VPN and re-run.", logf)
         return False
+    active = [(c, p) for c, p in CONFIGS if not configs or c in configs]
+    names = [c for c, _ in active]
+    log(f"      configurations: {', '.join(names)}", logf)
     done = load_done(runs_path)
-    total = len(rows) * len(CONFIGS)
-    have = sum(1 for row in rows for cfg, _ in CONFIGS if (row["qid"], cfg) in done)
+    total = len(rows) * len(active)
+    have = sum(1 for row in rows for cfg, _ in active if (row["qid"], cfg) in done)
     log(f"      {have} of {total} runs already done; {total - have} to go "
         f"(roughly {max(1, (total - have) * 4 // max(1, workers) // 60)} min)", logf)
     t0 = time.time()
     with ThreadPoolExecutor(max_workers=workers) as ex:
         futs = []
-        for row in rows:
-            futs.append(ex.submit(run_doc_pair, base, row, runs_path, done, logf))
-        for cfg, params in CONFIGS[2:]:          # one configuration at a time, in list order
+        if "doc_extractive" in names or "doc_generative" in names:
+            for row in rows:
+                futs.append(ex.submit(run_doc_pair, base, row, runs_path, done, logf, names))
+        for cfg, params in active:               # one configuration at a time, in list order
+            if cfg.startswith("doc_"):
+                continue
             for row in rows:
                 if (row["qid"], cfg) not in done:
-                    futs.append(ex.submit(run_e2e, base, row, cfg, params, runs_path, logf))
+                    fn = run_pipeline if cfg.startswith("pipeline") else run_e2e
+                    args = (base, row, runs_path, logf, cfg) if cfg.startswith("pipeline") else (base, row, cfg, params, runs_path, logf)
+                    futs.append(ex.submit(fn, *args))
         for i, f in enumerate(as_completed(futs), 1):
             try:
                 f.result()
@@ -547,7 +654,7 @@ def stage_qa(out, rows, workers, logf):
             if i % 20 == 0:
                 log(f"      progress: {i}/{len(futs)} tasks, {round((time.time() - t0) / 60, 1)} min elapsed", logf)
     done = load_done(runs_path)
-    ok = sum(1 for row in rows for cfg, _ in CONFIGS if (row["qid"], cfg) in done)
+    ok = sum(1 for row in rows for cfg, _ in active if (row["qid"], cfg) in done)
     missing = total - ok
     log(f"      finished: {ok} of {total} runs have a valid answer"
         + (f"; {missing} still failing (re-run the same command to retry them)" if missing else ""), logf)
@@ -596,13 +703,19 @@ def main():
     ap.add_argument("--out", default="kybele_d103")
     ap.add_argument("--probe", action="store_true", help="connectivity check only")
     ap.add_argument("--qa-base", default=None, help="QA API base URL (default: https://qa.sibils.org/api)")
+    ap.add_argument("--configs", default="", help="comma-separated configurations to run "
+                    "(default: the five service configurations and pipeline)")
     args = ap.parse_args()
+    configs = [c.strip() for c in args.configs.split(",") if c.strip()] or [c for c, _ in CONFIGS if c != "pipeline_extractive"]
+    unknown = set(configs) - {c for c, _ in CONFIGS}
+    if unknown:
+        sys.exit(f"unknown configuration(s): {', '.join(sorted(unknown))}")
     if args.qa_base:
         QA_BASES.insert(0, args.qa_base.rstrip("/"))
 
     os.makedirs(args.out, exist_ok=True)
     logf = os.path.join(args.out, "log.txt")
-    log(f"KYBELE D10.3 evaluation runner v5, output folder: {os.path.abspath(args.out)}", logf)
+    log(f"KYBELE D10.3 evaluation runner v6, output folder: {os.path.abspath(args.out)}", logf)
     if args.probe:
         probe(logf)
         return
@@ -623,7 +736,7 @@ def main():
         log("No candidate questions could be built from the sampled treatments.", logf)
         make_zip(args.out, logf)
         sys.exit(1)
-    stage_qa(args.out, rows, args.workers, logf)
+    stage_qa(args.out, rows, args.workers, logf, configs)
     make_zip(args.out, logf)
 
 

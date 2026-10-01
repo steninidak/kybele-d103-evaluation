@@ -12,3 +12,9 @@ __pycache__/
 kybele_d103/
 kybele_trophic/
 kybele_trophic_qa/
+
+# Run folders before they are moved to results/
+runs/
+
+# Pinned tables of collembola-trait-mining, fetched by score_pipeline_output.py --fetch (no licence upstream)
+external/

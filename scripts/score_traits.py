@@ -10,6 +10,24 @@ Scores each QA answer the way the KYBELE trait pipeline reads it, instead of by 
 Outcomes per answer: correct, wrong (a value/class that does not match), no_answer (the answer
 states no usable value, e.g. "not mentioned"), and for habitat also geography (only a place).
 
+Which answer is scored:
+  the five service configurations  the Plazi collection's answer (every gold treatment is in Plazi)
+  the pipeline configuration        the answer the trait pipeline keeps: the first non-empty answer
+                                    in the order the service returns the collections
+                                    (collembola_species_traits.query_qa_docrefs)
+For the pipeline configuration the scorer also reports "stored": the PRIMARY value that
+trait_extraction_v3 would write to the trait table (extract_body_size, extract_habitat,
+extract_trophic), i.e. what the pipeline records, not only what the answer says.
+
+Negative items (gold_answer NOT_DOCUMENTED, data/benchmark_negatives.csv) are scored as correct
+when no value is given (or stored) and wrong when one is. They are summarised under
+"<trait>_negative" and kept out of "all".
+
+Gold habitat classes come from the benchmark's own gold_habitat_classes column when it has one
+(population benchmark), else from the reviewed_classes column of
+data/curation/traits/habitat_gold_classes.csv where a reviewer has filled it, else from
+MANUAL_HABITAT, else from the classifier run on the gold span.
+
 Usage: python3 score_traits.py benchmark_traits.csv runs.jsonl out_dir
 """
 
@@ -33,6 +51,19 @@ except ImportError:
 
 # Gold habitat classes the keyword classifier misses (vocabulary gaps), assigned by hand.
 MANUAL_HABITAT = {"K025": {"leaf_litter"}, "K093": {"synanthropic"}, "K123": {"leaf_litter"}, "K215": {"cave"}}
+NOT_DOCUMENTED = "NOT_DOCUMENTED"
+REVIEWED_HABITAT_PATH = Path(__file__).resolve().parent.parent / "data/curation/traits/habitat_gold_classes.csv"
+
+
+def load_reviewed_habitat(path=REVIEWED_HABITAT_PATH):
+    if not path.exists():
+        return {}
+    # "none" means the gold names no habitat class: the item is then not scored.
+    return {r["qid"]: set(filter(None, r["reviewed_classes"].split("|"))) - {"none"}
+            for r in csv.DictReader(open(path, encoding="utf-8")) if r.get("reviewed_classes", "").strip()}
+
+
+REVIEWED_HABITAT = load_reviewed_habitat()
 # Gold guilds for the trophic items (Potapov et al. 2022 scheme). [TBC: confirm with the reviewers]
 GOLD_GUILDS = {"K235": {"detritivore"}, "K236": {"fungivore"}, "K237": {"fungivore", "detritivore"},
                "K238": {"detritivore", "omnivore"}, "K244": {"fungivore"}, "K247": {"fungivore"},
@@ -92,6 +123,8 @@ def habitat_classes(text, species):
 
 
 def gold_habitat(qid, gold, species):
+    if qid in REVIEWED_HABITAT:
+        return REVIEWED_HABITAT[qid]
     if qid in MANUAL_HABITAT:
         return MANUAL_HABITAT[qid]
     cls = set()
@@ -134,6 +167,55 @@ def is_server_error(resp):
     return not resp.get("collection_results") and not resp.get("model") and resp.get("pipeline_time") is None
 
 
+def pipeline_answer(resp):
+    """(answer, collection): the first non-empty answer in the order the service returns the
+    collections, as collembola_species_traits.query_qa_docrefs keeps it."""
+    for c in resp.get("collection_results") or []:
+        a = (c.get("answers") or [{}])[0].get("answer") or ""
+        if a:
+            return a, c.get("collection") or ""
+    return "", ""
+
+
+def _range_values(r):
+    vals = []
+    for x in re.split(r"[-–]", r or ""):
+        try:
+            vals.append(float(x))
+        except ValueError:
+            pass
+    return vals
+
+
+def stored_outcome(answer, qt, species, gold, gold_cls=None, gold_guilds=None):
+    """Outcome of the PRIMARY value trait_extraction_v3 would store from the answer."""
+    if qt == "body_size":
+        vals = _range_values(tx.extract_body_size(answer or "", species)["range_mm"])
+        if not vals:
+            return "no_answer"
+        gv = gold_values(gold)
+        return "correct" if any(abs(v - g) <= 0.02 * g for v in vals for g in gv) else "wrong"
+    if qt == "habitat":
+        got = set(tx.extract_habitat(answer or "", species)["habitats"])
+        return "no_answer" if not got else ("correct" if got & (gold_cls or set()) else "wrong")
+    got = set(tx.extract_trophic(answer or "", species)["guilds"])
+    if "microbivore" in got:
+        got |= {"fungivore", "bacterivore"}
+    gg = set(gold_guilds or set())
+    if "microbivore" in gg:
+        gg |= {"fungivore", "bacterivore"}
+    return "no_answer" if not got else ("correct" if got & gg else "wrong")
+
+
+def negative(outcome):
+    """A negative item is answered correctly when no value is given."""
+    return outcome if outcome == "unscored" else ("correct" if outcome in ("no_answer", "geography") else "wrong")
+
+
+def primary(r):
+    return r["pipeline"] if r["config"].startswith("pipeline") else r["plazi"]
+
+
 def answers(resp):
     """Return (plazi answer, top-ranked answer, top collection, plazi doc ids)."""
     cols = sorted(resp.get("collection_results") or [], key=lambda c: c.get("rank", 99))
@@ -157,7 +239,8 @@ def main(bench_path, runs_path, out_dir="."):
         if not line.strip():
             continue
         run = json.loads(line)
-        if run["qid"] not in bench or run.get("error") or is_server_error(run.get("response") or {}):
+        if run["qid"] not in bench or run.get("error") or (
+                not run.get("no_docs") and is_server_error(run.get("response") or {})):
             continue
         latest[(run["qid"], run["config"])] = run
 
@@ -172,21 +255,38 @@ def main(bench_path, runs_path, out_dir="."):
     for (qid, cfg), run in sorted(latest.items()):
         b = bench[qid]
         sp, qt, gold = b["taxon"], b["question_type"], b["gold_answer"]
+        neg = gold == NOT_DOCUMENTED
         plazi, top, top_col, ids = answers(run["response"])
-        rec = {"qid": qid, "config": cfg, "trait": qt, "family": b["family"],
-               "answer_offset": int(b["answer_offset"]), "gold": gold,
+        rec = {"qid": qid, "config": cfg, "trait": qt + ("_negative" if neg else ""), "family": b["family"],
+               "answer_offset": int(b["answer_offset"]) if b.get("answer_offset") else -1, "gold": gold,
                "plazi_answer": plazi, "top_collection": top_col,
                "gold_retrieved": int(b["docid"] in ids), "wall_s": run.get("wall_s")}
-        for pref, ans in (("plazi", plazi), ("top", top)):
+        gc = gg = None
+        if qt == "habitat" and not neg:
+            own = set(filter(None, (b.get("gold_habitat_classes") or "").split("|")))
+            gc = own or gold_habitat(qid, gold, sp)
+        if qt == "trophic_guild":
+            gg = item_guilds[qid] if cfg.startswith("doc") else species_guilds[sp]
+        answers_to_score = [("plazi", plazi), ("top", top)]
+        if cfg.startswith("pipeline"):
+            pa, pcol = pipeline_answer(run["response"])
+            rec.update(pipeline_answer=pa, pipeline_collection=pcol, pipeline_path=run.get("pipeline_path", ""),
+                       n_pipeline_docs=len(run.get("pipeline_ids") or []), no_docs=int(bool(run.get("no_docs"))),
+                       gold_in_pipeline_ids=int(bool(run.get("gold_in_pipeline_ids"))))
+            answers_to_score.append(("pipeline", pa))
+        for pref, ans in answers_to_score:
             if qt == "body_size":
-                rec[pref] = score_body(ans, gold)
+                rec[pref] = score_body(ans, "" if neg else gold)
             elif qt == "habitat":
-                gc = gold_habitat(qid, gold, sp)
                 rec[pref] = score_habitat(ans, gc, sp) if gc else "unscored"
             else:
-                gg = item_guilds[qid] if cfg.startswith("doc") else species_guilds[sp]
                 rec[pref] = score_trophic(ans, sp, gg)
-                rec[pref + "_food"] = food_match(ans, gold)
+                rec[pref + "_food"] = 0 if neg else food_match(ans, gold)
+            if neg:
+                rec[pref] = negative(rec[pref])
+        if cfg.startswith("pipeline"):
+            st = stored_outcome(rec["pipeline_answer"], qt, sp, "" if neg else gold, gc, gg)
+            rec["stored"] = negative(st) if neg else ("unscored" if qt == "habitat" and not gc else st)
         rows.append(rec)
 
     out = Path(out_dir)
@@ -198,12 +298,13 @@ def main(bench_path, runs_path, out_dir="."):
 
     summ = defaultdict(dict)
     for cfg in sorted({r["config"] for r in rows}):
-        for trait in ("body_size", "habitat", "trophic_guild", "all"):
-            rs = [r for r in rows if r["config"] == cfg and (trait == "all" or r["trait"] == trait)
-                  and r["plazi"] != "unscored"]
+        for trait in ("body_size", "habitat", "trophic_guild", "all",
+                      "body_size_negative", "habitat_negative", "trophic_guild_negative"):
+            rs = [r for r in rows if r["config"] == cfg and r["plazi"] != "unscored"
+                  and (r["trait"] == trait or (trait == "all" and not r["trait"].endswith("_negative")))]
             if not rs:
                 continue
-            c = Counter(r["plazi"] for r in rs)
+            c = Counter(primary(r) for r in rs)
             n = len(rs)
             s = {"n": n, **{k: round(c[k] / n, 3) for k in ("correct", "wrong", "no_answer", "geography")},
                  "top_correct": round(sum(r["top"] == "correct" for r in rs) / n, 3),
@@ -213,7 +314,14 @@ def main(bench_path, runs_path, out_dir="."):
             for lo, hi, lab in ((0, 1500, "offset<=1500"), (1501, 10 ** 9, "offset>1500")):
                 sub = [r for r in rs if lo <= r["answer_offset"] <= hi]
                 if sub:
-                    s[lab] = {"n": len(sub), "correct": round(sum(r["plazi"] == "correct" for r in sub) / len(sub), 3)}
+                    s[lab] = {"n": len(sub), "correct": round(sum(primary(r) == "correct" for r in sub) / len(sub), 3)}
+            if cfg.startswith("pipeline"):
+                ss = [r for r in rs if r["stored"] != "unscored"]
+                cs = Counter(r["stored"] for r in ss)
+                s["stored"] = {"n": len(ss), **{k: round(cs[k] / len(ss), 3) for k in ("correct", "wrong", "no_answer")}}
+                s["gold_in_pipeline_ids"] = round(sum(r["gold_in_pipeline_ids"] for r in rs) / n, 3)
+                s["no_docs"] = round(sum(r["no_docs"] for r in rs) / n, 3)
+                s["pipeline_collection"] = dict(sorted(Counter(r["pipeline_collection"] or "none" for r in rs).items()))
             summ[cfg][trait] = s
     json.dump(summ, open(out / "summary_traits.json", "w"), indent=2)
     for cfg, d in summ.items():

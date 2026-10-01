@@ -1,6 +1,6 @@
 # TODO
 
-Open work on the KYBELE D10.3 evaluation, as of 29 September 2026. Context, rules and history
+Open work on the KYBELE D10.3 evaluation, as of 30 September 2026. Context, rules and history
 are in [AGENTS.md](AGENTS.md). Tick items off in the same commit that does the work, and add
 new items where they belong.
 
@@ -29,6 +29,18 @@ Collembola specialist, still to be named.
 
 The deliverable text is kept by the coordinator. Its remaining `[TBC]` placeholders:
 
+- [ ] **Coord:** Correct every statement that the trait pipeline uses `e2e_sparse_generative`
+  (sections 3.2, 4.1, 4.3, 7). Only its genus batch does; the species pipeline runs its own phrase
+  search and passes the documents through `doc_refs`. Report the `pipeline` configuration as the
+  pipeline's result (README, "The trait pipeline (L2)") and keep the service configurations as
+  diagnostics of L1.
+- [ ] **Coord:** Add the layer view (L1 service, L2 pipeline, L3 evaluation), the published-table
+  check (v3 stores a guild for 4 of 21 held-out species) and the answer-selection finding to
+  sections 4–6, with P18–P21 below.
+- [ ] **Coord:** Limitations: the treatment benchmark shares 5 species with the pipeline's 330;
+  habitat gold classes come from the pipeline's classifier until reviewed; the trophic
+  vocabulary extension was built on the gold (report the base-vocabulary figures beside it).
+
 - [ ] **Coord:** Document information: lead beneficiary; authors (names, ORCID, affiliations);
   contractual due date; submission date. The version is still "0.1 draft".
 - [ ] **Spec:** Section 2.3, specialist spot-check. Send `spotcheck/KYBELE_D10.3_specialist_spotcheck.xlsx`
@@ -39,8 +51,9 @@ The deliverable text is kept by the coordinator. Its remaining `[TBC]` placehold
   version deployed on qa.sibils.org.
 - [ ] **SIB:** Section 5.2, confirm the passage window the generative model receives (assumed about
   600 characters chosen by a keyword window).
-- [ ] **TM:** Section 4.2, reconcile the flagged body sizes: 14 of 27 in the adjudication file
-  against 15 (56 %) in the repository summary.
+- [x] ~~**TM:** Section 4.2, reconcile the flagged body sizes: 14 of 27 in the adjudication file
+  against 15 (56 %) in the repository summary.~~ Not needed: D10.3 now reports only version 3, so
+  version 2 error rates are no longer given (1 October 2026).
 - [ ] **Coord:** Section 6.2, the target date for every planned action P1–P17. Also the owner of
   P6–P17, now shown as "[Node]".
 - [ ] **Coord:** Section 7, the remaining WP10 deliverables and milestones this work feeds into,
@@ -52,6 +65,18 @@ The deliverable text is kept by the coordinator. Its remaining `[TBC]` placehold
 
 ## 3. Benchmarks
 
+- [ ] **Spec:** Curate the population benchmark (`data/population/population_curation.csv`,
+  100 species x 3 traits), blind to the pipeline's output, then run
+  `make_population_sample.py build`, the runner (`--configs pipeline,e2e_sparse_generative`) and
+  `score_pipeline_output.py`. About 2–3 specialist days.
+- [ ] **Spec:** Review the negative items (`data/benchmark_negatives.csv`) and the habitat gold
+  classes (`reviewed_classes` in `data/curation/traits/habitat_gold_classes.csv`). Then re-score
+  and report how many habitat outcomes change.
+- [ ] **Spec:** Have two people score the 25 spot-check items independently and report their
+  agreement (Cohen's kappa), so the gold has a measured reliability.
+- [ ] **TM + Spec:** Expert review of values the v3 rules were not written for: all primary
+  trophic guilds and body sizes of v3 outside the 56 adjudicated pairs, and a random 40 habitat
+  values. This gives v3's precision on new data.
 - [ ] **Spec (optional):** Spot-check the trophic benchmark too, about 20 questions (16 species,
   4 genus level). Extend `scripts/make_spotcheck.py` with a second sheet for this, using the same
   seed.
@@ -73,7 +98,7 @@ with the "measured" column (see section 5 below).
 
 | # | Owner | Action | Measured before |
 |---|---|---|---|
-| P1 | SIB | Fix the dense-retrieval generative failure and return an error instead of an empty answer | 102 of 126 trait requests failed, 22 of 102 trophic requests |
+| P1 | SIB | Fix the dense-retrieval generative failure and return an error instead of an empty answer | 102 of 126 trait requests failed, 22 of 102 trophic requests; 0 of 69 succeed when BM25 finds nothing in one collection (fallback to the unfiltered dense index); `/qa/multi` swallows the exception |
 | P2 | SIB | For taxon-specific trait questions, rank the Plazi answer first, or rank collections by answer confidence | PMC answer ranked first for 94 of 126 questions |
 | P3 | SIB | Enforce the full binomial in every retrieval path, including the keyword fallback, and drop passages whose subject is another taxon | All 20 wrong end-to-end body sizes came from other documents |
 | P4 | SIB | Instruct the generative model to quote the stated value, and choose its passage by treatment section rather than keyword overlap | "Not stated" in 43 % of answers; in 14 of 25 body-size cases the value was in the returned passage |
@@ -90,9 +115,17 @@ with the "measured" column (see section 5 below).
 | P15 | TM | Apply the "not stated" rule per sentence, so that a closing caveat does not demote an explicit diet statement | Correct guild lost in 10 of 81 species answers given the source (12 of 67 dense) |
 | P16 | TM | Genus classifier: remove "collembola", "mite" and "arthropod" from the predator keywords, and read the answer sentence by sentence | Unstated predator guild added to 5 of 21 genus answers |
 | P17 | TM | Report trophic-guild accuracy against a constant "fungi" answer and on non-fungal taxa, and track the named food, not only the guild | A constant "fungi" answer scores 63–75 % on guild |
+| P18 | TM | Keep the first answer that does not deny the trait (or read every collection's answer), not the first non-empty one | Stored value correct 46 → 59 of 115 traits, 37 → 44 of 81 species diets when simulated on the same responses |
+| P19 | SIB | Under `doc_refs`, order collections by the relevance of their answers, not alphabetically (`sorted()` in `api_server.py`) | Medline listed first whenever present; its "not stated" displaced the treatment's value |
+| P20 | TM | Phrase search in PMC full text, not only title, abstract and keywords | Gold diet document reached the reader for 40 % of species questions |
+| P21 | TM | Track recall, not only removed errors: score each pipeline version on species outside the expert review and on the population benchmark | v3 stores a guild for 4 of 21 held-out species with a documented diet, against 7 of 10 reviewed ones |
+| P22 | TM | Choose the reader per trait: the extractive reader for body size on the pipeline's documents, the generative reader for diet and habitat | Body size on the pipeline's documents: extractive 100 % precision, 62 % recall; generative stored 38 % recall |
+| P23 | SIB | Return a confidence for generative answers (token log-probabilities, or a flag for hedged answers), and the passage the model read | `answer_score` is `None` for generative answers; hedged answers are right 76–82 %, plain ones 91–98 % |
+| P24 | TM | Store a diet only when both readers agree on the same documents, and send disagreements for review | Agreement: 97–100 % precision at 28–71 % recall; generative alone 91–95 % per question, 58–62 % per label |
 
 - [ ] P1 · [ ] P2 · [ ] P3 · [ ] P4 · [ ] P5 · [ ] P6 · [ ] P7 · [ ] P8 · [ ] P9 · [ ] P10 ·
-  [ ] P11 · [ ] P12 · [ ] P13 · [ ] P14 · [ ] P15 · [ ] P16 · [ ] P17
+  [ ] P11 · [ ] P12 · [ ] P13 · [ ] P14 · [ ] P15 · [ ] P16 · [ ] P17 · [ ] P18 · [ ] P19 ·
+  [ ] P20 · [ ] P21 · [ ] P22 · [ ] P23 · [ ] P24
 
 The scorer here already works around P15 and P16 for its "guild of the answer" measure. The
 "guild recorded by the pipeline" measure deliberately keeps the pipeline's behaviour, so it will
@@ -100,19 +133,26 @@ show when P14–P16 land.
 
 ## 5. Re-evaluation after a change (P12)
 
-1. Note what changed (service commit, model, prompt, extractor commit).
-2. Run both benchmarks into new folders with runner v5:
+1. Note what changed (service commit, model, prompt, extractor commit, pipeline commit). Run
+   `python3 scripts/check_pipeline_sync.py` (add `--commit` for a new pipeline commit) and update
+   the copied logic if it fails.
+2. Run all benchmarks into new folders with runner v6 (all six configurations, including
+   `pipeline`; the negative items too):
    ```bash
    python3 scripts/bench_to_candidates.py data/benchmark_traits.csv  runs/traits_YYYYMMDD/candidates.csv
    python3 scripts/bench_to_candidates.py data/benchmark_trophic.csv runs/trophic_YYYYMMDD/candidates.csv
    python3 scripts/kybele_d103_eval.py --out runs/traits_YYYYMMDD
    python3 scripts/kybele_d103_eval.py --out runs/trophic_YYYYMMDD
+   python3 scripts/bench_to_candidates.py data/benchmark_negatives.csv runs/negatives_YYYYMMDD/candidates.csv
+   python3 scripts/kybele_d103_eval.py --out runs/negatives_YYYYMMDD
    ```
 3. Re-run the same command until the log says every run has a valid answer, or only
    deterministic server errors remain.
 4. Score each run with `score.py`, then with `score_traits.py` or `score_trophic.py`, into the run
    folder. Move the folder to `results/` with its log.
-5. Add a row to the README results tables, and a line to the decision log in AGENTS.md.
+5. Re-run `score_pipeline_output.py` on the new pipeline tables and `attribution.py` on the new
+   folders.
+6. Add a row to the README results tables, and a line to the decision log in AGENTS.md.
 
 ## 6. Code hygiene
 
@@ -125,3 +165,5 @@ show when P14–P16 land.
   scoring has one definition. Re-score the treatment benchmark and note any change.
 - [ ] Make `data/curation/traits/build2.py` path-independent, or mark it clearly as a record only.
 - [ ] Give the runner a `--limit` option for quick tests.
+- [ ] Add `check_pipeline_sync.py` to the CI workflow, so drift in collembola-trait-mining fails
+  the build.

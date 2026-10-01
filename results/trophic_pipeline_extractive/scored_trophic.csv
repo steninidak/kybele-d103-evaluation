@@ -1,0 +1,104 @@
+qid,config,taxon,rank,nonfungal,evidence,hedged,collection,gold_guilds,gold_answer,answer_text,answer_collection,guilds_pipeline,guilds_answer,pipeline,answer,food_match,gold_retrieved,doc_ref_hit_gold,wall_s,no_docs,n_pipeline_docs
+P001,pipeline_extractive,Agrenia bidenticulata,species,0,field,0,pmc,algivore|microbivore,the biofilm || biofilm,Hypogastrura concolor,medline,,,no_answer,no_answer,0,0,,8.32,0,6
+P002,pipeline_extractive,Anurida maritima,species,1,isotope,0,pmc,omnivore|predator,"marine and terrestrial invertebrates, as well as marine macrophytes || marine and terrestrial invertebrates || invertebrates || marine macrophytes",Poduromorpha,medline,,,no_answer,no_answer,0,0,,13.7,0,15
+P003,pipeline_extractive,Archisotoma pulchella,species,1,literature,0,pmc,algivore,diatoms,Denis 1923a,plazi,,,no_answer,no_answer,0,0,,5.33,0,2
+P004,pipeline_extractive,Archisotoma theae,species,1,isotope,0,pmc,predator,first order predator lifestyle || first order predator || predator || trophic level III,,,,,no_answer,no_answer,0,0,,2.63,1,0
+P005,pipeline_extractive,Bourletiella hortensis,species,1,field,0,pmc,herbivore,Tiny pioneer mosses || mosses,springtail,medline,,,no_answer,no_answer,0,0,,9.21,0,7
+P006,pipeline_extractive,Bourletiella hortensis,species,1,field,0,pmc,herbivore,pepino || Solanum muricatum,springtail,medline,,,no_answer,no_answer,0,0,,7.11,0,7
+P007,pipeline_extractive,Ceratophysella denticulata,species,0,literature,0,pmc,bacterivore|fungivore|microbivore,bacteria and fungi || bacteria || fungi || nematodes,surface-dwelling,medline,,,no_answer,no_answer,0,0,,13.35,0,16
+P008,pipeline_extractive,Cryptopygus clavatus,species,1,field,0,medline,algivore,algae || grazing on algae under water,algae under water,medline,,algivore,no_answer,correct,1,1,,7.16,0,4
+P009,pipeline_extractive,Desoria choi,species,0,isotope,0,pmc,detritivore|microbivore,a more microbial-based diet || litter resources || microbial,,,,,no_answer,no_answer,0,0,,2.66,1,0
+P010,pipeline_extractive,Desoria ruseki,species,0,lab,0,medline,detritivore|fungivore,corn litter || Mongolian oak litter || yeast,"corn litter (agriculture grain residuals), Mongolian oak litter (natural plant residuals), and yeast",medline,,detritivore|fungivore,no_answer,correct,1,1,,5.83,0,4
+P011,pipeline_extractive,Entomobrya proxima,species,1,lab,0,medline,detritivore|omnivore,carrion,Soil-Dwelling Collembolan,medline,,,no_answer,no_answer,0,1,,8.64,0,9
+P012,pipeline_extractive,Entomobrya proxima,species,1,lab,0,pmc,detritivore|omnivore,organic fertilizer,Soil-Dwelling Collembolan,medline,,,no_answer,no_answer,0,1,,8.99,0,9
+P013,pipeline_extractive,Folsomia candida,species,0,lab,0,medline,bacterivore|detritivore|fungivore,F. oxysporum mycelium || Fusarium oxysporum || mycelium,edaphon,medline,,,no_answer,no_answer,0,0,,16.47,0,18
+P014,pipeline_extractive,Folsomia candida,species,0,lab,0,pmc,bacterivore|detritivore|fungivore,"F. verticillioides, F. graminearum, A. ochraceus, and A. nidulans || mycotoxin-producing fungi || fungi",edaphon,medline,,,no_answer,no_answer,0,1,,15.41,0,18
+P015,pipeline_extractive,Folsomia candida,species,0,literature,0,pmc,bacterivore|detritivore|fungivore,vegetative hyphae and conidia || A. nidulans || hyphae,edaphon,medline,,,no_answer,no_answer,0,0,,14.15,0,18
+P016,pipeline_extractive,Folsomia candida,species,0,lab,0,medline,bacterivore|detritivore|fungivore,Phanerochaete velutina mycelial systems || Phanerochaete velutina || mycelial,edaphon,medline,,,no_answer,no_answer,0,0,,14.51,0,18
+P017,pipeline_extractive,Folsomia candida,species,0,lab,0,medline,bacterivore|detritivore|fungivore,the filamentous fungus Aspergillus nidulans || Aspergillus nidulans,edaphon,medline,,,no_answer,no_answer,0,0,,17.23,0,18
+P018,pipeline_extractive,Folsomia candida,species,0,lab,0,medline,bacterivore|detritivore|fungivore,S. perfoliatum litter || litter,edaphon,medline,,,no_answer,no_answer,0,0,,17.1,0,18
+P019,pipeline_extractive,Folsomia candida,species,0,lab,0,medline,bacterivore|detritivore|fungivore,the Streptomyces colonies || Streptomyces,edaphon,medline,,,no_answer,no_answer,0,0,,16.92,0,18
+P020,pipeline_extractive,Folsomia candida,species,0,literature,1,pmc,bacterivore|detritivore|fungivore,black fungi,edaphon,medline,,,no_answer,no_answer,0,1,,16.76,0,18
+P021,pipeline_extractive,Folsomia candida,species,0,literature,0,pmc,bacterivore|detritivore|fungivore,the external hyphae of AMF || hyphae of AMF || AMF,edaphon,medline,,,no_answer,no_answer,0,0,,16.03,0,18
+P022,pipeline_extractive,Folsomia candida,species,0,literature,0,pmc,bacterivore|detritivore|fungivore,fungi growing on organic surfaces || fungi,edaphon,medline,,,no_answer,no_answer,0,0,,16.76,0,18
+P023,pipeline_extractive,Folsomia candida,species,0,lab,0,medline,bacterivore|detritivore|fungivore,seven saprophytic fungal species || saprophytic fungal species || fungi,edaphon,medline,,,no_answer,no_answer,0,1,,14.06,0,18
+P024,pipeline_extractive,Folsomia candida,species,0,lab,0,pmc,bacterivore|detritivore|fungivore,T. virens || Trichoderma virens || T. virens Gv29.8,edaphon,medline,,,no_answer,no_answer,0,0,,14.98,0,18
+P025,pipeline_extractive,Folsomia candida,species,0,literature,0,pmc,bacterivore|detritivore|fungivore,preferred fungal species || fungal species || fungi,edaphon,medline,,,no_answer,no_answer,0,0,,15.61,0,18
+P026,pipeline_extractive,Folsomia candida,species,0,literature,0,pmc,bacterivore|detritivore|fungivore,fungi without chemical defenses || fungi without repellant crystalline structures || modified A. nidulans || fungi,edaphon,medline,,,no_answer,no_answer,0,0,,15.57,0,18
+P027,pipeline_extractive,Folsomia fimetaria,species,0,lab,0,medline,bacterivore|microbivore,bacteria and protozoa || bacteria,collembolan,medline,,,no_answer,no_answer,0,1,,10.72,0,14
+P028,pipeline_extractive,Folsomia fimetarioides,species,0,lab,0,medline,fungivore,metal-tolerant fungi || fungi,fungi,medline,,fungivore,no_answer,correct,1,1,,3.89,0,1
+P029,pipeline_extractive,Folsomia octoculata,species,0,isotope,1,pmc,fungivore|herbivore,root-derived carbon || mycorrhizal fungi,litter,plazi,,detritivore,no_answer,wrong,0,0,,3.4,0,1
+P030,pipeline_extractive,Folsomia quadrioculata,species,1,literature,0,pmc,detritivore,litter,Cu,medline,,,no_answer,no_answer,0,0,,14.82,0,17
+P031,pipeline_extractive,Heteromurus nitidus,species,0,literature,1,pmc,fungivore|predator,nematodes,Collembola,medline,,,no_answer,no_answer,0,0,,10.67,0,14
+P032,pipeline_extractive,Heteromurus nitidus,species,0,lab,0,medline,fungivore|predator,Zymoseptoria tritici || Z. tritici || fungal pathogen,Collembola,medline,,,no_answer,no_answer,0,1,,8.66,0,14
+P033,pipeline_extractive,Isotoma caerulea,species,1,isotope,0,medline,detritivore|herbivore,plant litter and root exudates || plant litter || root exudates,eicosapentaenoic acid,medline,,,no_answer,no_answer,0,1,,5.56,0,4
+P034,pipeline_extractive,Isotoma viridis,species,0,gut,0,pmc,algivore|detritivore|fungivore|microbivore,Fungal hyphae || Fungal spores || Diatom algae,eggs,medline,,,no_answer,no_answer,0,0,,9.99,0,11
+P035,pipeline_extractive,Isotoma viridis,species,0,isotope,1,pmc,algivore|detritivore|fungivore|microbivore,dead organic matter || microorganisms,eggs,medline,,,no_answer,no_answer,0,0,,9.38,0,11
+P036,pipeline_extractive,Isotomiella minor,species,0,literature,1,pmc,bacterivore|fungivore,bacteria,undisturbed deciduous forests,medline,,,no_answer,no_answer,0,0,,11.53,0,15
+P037,pipeline_extractive,Isotomiella minor,species,0,lab,0,medline,bacterivore|fungivore,fungi of different metal tolerance || fungi,undisturbed deciduous forests,medline,,,no_answer,no_answer,0,1,,12.42,0,15
+P038,pipeline_extractive,Isotomurus palustris,species,1,literature,0,pmc,predator,nematodes || nematode,Cu and water,medline,,,no_answer,no_answer,0,0,,9.3,0,11
+P039,pipeline_extractive,Lepidocyrtus chorus,species,0,gut,0,plazi,fungivore|herbivore,pollen || plant material || fungal hyphae,food,medline,,,no_answer,no_answer,0,1,,4.12,0,2
+P040,pipeline_extractive,Lepidocyrtus curvicollis,species,0,lab,0,pmc,fungivore,mycelium || fungi || fungivore,collembolan,medline,,,no_answer,no_answer,0,1,,9.92,0,12
+P041,pipeline_extractive,Lepidocyrtus cyaneus,species,0,isotope,0,pmc,bacterivore|fungivore,fungivorous || fungi,wheat,medline,,,no_answer,no_answer,0,0,,7.23,0,9
+P042,pipeline_extractive,Lepidocyrtus cyaneus,species,0,literature,0,pmc,bacterivore|fungivore,fungi || bacteria,wheat,medline,,,no_answer,no_answer,0,0,,4.9,0,9
+P043,pipeline_extractive,Lepidocyrtus lignorum,species,0,gut,0,pmc,fungivore,Fungal hyphae || Fungal spores,springtails,medline,,,no_answer,no_answer,0,0,,8.11,0,13
+P044,pipeline_extractive,Lepidocyrtus violaceus,species,0,lab,0,pmc,fungivore,yeast,Podura violacea,plazi,,,no_answer,no_answer,0,0,,6.75,0,6
+P045,pipeline_extractive,Mesaphorura krausbaueri,species,0,lab,0,pmc,fungivore,pathogenic fungi || fungi,the rhizosphere is important for soil fauna,medline,,,no_answer,no_answer,0,0,,9.2,0,8
+P046,pipeline_extractive,Neanura muscorum,species,0,lab,0,pmc,fungivore,P. polycephalum slime mould || slime mould || slime mold,Poduromorpha,medline,,,no_answer,no_answer,0,1,,9.27,0,12
+P047,pipeline_extractive,Onychiurus armatus,species,0,lab,0,medline,fungivore|predator,fungi,fungivorous collembolan,medline,,fungivore,no_answer,correct,1,1,,11.26,0,9
+P048,pipeline_extractive,Onychiurus armatus,species,0,lab,0,medline,fungivore|predator,Verticillium bulbillosum and Penicillium spinulosum || soil fungi || fungal biomass,fungivorous collembolan,medline,,fungivore,no_answer,correct,0,1,,10.22,0,9
+P049,pipeline_extractive,Onychiurus armatus,species,0,lab,0,pmc,fungivore|predator,the nematodes within the cysts || nematodes || Heterodera cruciferae,fungivorous collembolan,medline,,fungivore,no_answer,correct,0,0,,7.73,0,9
+P050,pipeline_extractive,Onychiurus armatus,species,0,literature,0,pmc,fungivore|predator,U. isabellina || Umbelopsis isabellina,fungivorous collembolan,medline,,fungivore,no_answer,correct,0,0,,7.76,0,9
+P051,pipeline_extractive,Onychiurus fimatus,species,1,lab,0,medline,bacterivore,bacteria,"soil microarthropod Onychiurus fimatus (Collembola).. In order to study the potential impact of the soil microarthropod Onychiurus fimatus (Collembola) on the microbial community, we analysed the fate of luciferase marker gene tagged bacterial strains fed to young adult specimens",medline,bacterivore|fungivore|microbivore,bacterivore|fungivore|microbivore,correct,correct,1,1,,4.78,0,5
+P052,pipeline_extractive,Onychiurus sinensis,species,0,lab,0,pmc,fungivore,Trichoderma polysporum,soil,medline,,,no_answer,no_answer,0,0,,3.16,0,1
+P053,pipeline_extractive,Orchesella cincta,species,0,lab,0,medline,algivore|fungivore|herbivore,algae,locomotory active,medline,,,no_answer,no_answer,0,1,,17.14,0,18
+P054,pipeline_extractive,Orchesella cincta,species,0,lab,0,medline,algivore|fungivore|herbivore,C. cladosporioides || Cladosporium cladosporioides,locomotory active,medline,,,no_answer,no_answer,0,0,,16.85,0,18
+P055,pipeline_extractive,Orchesella cincta,species,0,literature,0,pmc,algivore|fungivore|herbivore,plants and algae || algae,locomotory active,medline,,,no_answer,no_answer,0,1,,13.24,0,18
+P056,pipeline_extractive,Orchesella flavescens,species,1,gut,0,pmc,detritivore|herbivore,plant particles || plant-synthesised FAs and plant particles || plant material,springtail,medline,,,no_answer,no_answer,0,0,,6.77,0,7
+P057,pipeline_extractive,Orchesella villosa,species,1,isotope,0,pmc,detritivore|herbivore,wheat plants || primary decomposers || plant material || plant-derived resources,N. sminthuri-like fungus,medline,,fungivore,no_answer,wrong,0,1,,8.38,0,11
+P058,pipeline_extractive,Parisotoma notabilis,species,0,isotope,1,pmc,microbivore,microorganisms associated with roots || microorganisms,disturbed habitats,medline,,,no_answer,no_answer,0,0,,14.42,0,17
+P059,pipeline_extractive,Prabhergia mana,species,0,field,1,plazi,fungivore,fungi,bee,medline,,,no_answer,no_answer,0,1,,4.26,0,3
+P060,pipeline_extractive,Proisotoma minuta,species,0,lab,0,medline,fungivore,mycophagous || mycelia || fungi,litter and yeast,medline,,detritivore|fungivore,no_answer,correct,0,1,,13.5,0,18
+P061,pipeline_extractive,Proisotoma minuta,species,0,literature,0,pmc,fungivore,Rhizoctonia solani || mycophagous || fungi,litter and yeast,medline,,detritivore|fungivore,no_answer,correct,0,1,,12.0,0,18
+P062,pipeline_extractive,Proisotoma minuta,species,0,literature,0,pmc,fungivore,fungivorous || fungi,litter and yeast,medline,,detritivore|fungivore,no_answer,correct,0,0,,11.44,0,18
+P063,pipeline_extractive,Protaphorura armata,species,0,lab,0,medline,fungivore,saprophytic fungal species || fungi,fungal,medline,,fungivore,no_answer,correct,0,1,,9.05,0,14
+P064,pipeline_extractive,Protaphorura armata,species,0,lab,0,pmc,fungivore,Trichoderma sp. || Trichoderma,fungal,medline,,fungivore,no_answer,correct,0,0,,7.81,0,14
+P065,pipeline_extractive,Protaphorura armata,species,0,literature,0,pmc,fungivore,Fusarium species || Fusarium,fungal,medline,,fungivore,no_answer,correct,0,0,,8.38,0,14
+P066,pipeline_extractive,Protaphorura fimata,species,0,lab,0,medline,detritivore|fungivore|herbivore,seeds and germinating seedlings of lettuce || seeds || seedlings,lettuce,medline,,herbivore,no_answer,correct,0,1,,8.19,0,14
+P067,pipeline_extractive,Protaphorura fimata,species,0,literature,0,pmc,detritivore|fungivore|herbivore,roots,lettuce,medline,,herbivore,no_answer,correct,0,0,,7.9,0,14
+P068,pipeline_extractive,Protaphorura fimata,species,0,lab,0,pmc,detritivore|fungivore|herbivore,the fungus Agrocybe gibberosa || Agrocybe gibberosa || fungus,lettuce,medline,,herbivore,no_answer,correct,0,0,,7.75,0,14
+P069,pipeline_extractive,Protaphorura fimata,species,0,literature,0,pmc,detritivore|fungivore|herbivore,fine roots of Zea mays || fine roots || litter resources,lettuce,medline,,herbivore,no_answer,correct,0,0,,7.27,0,14
+P070,pipeline_extractive,Protaphorura fimata,species,0,lab,0,medline,detritivore|fungivore|herbivore,the fungal diet || fungal,lettuce,medline,,herbivore,no_answer,correct,0,1,,7.91,0,14
+P071,pipeline_extractive,Sinella curviseta,species,0,lab,0,medline,fungivore|predator,nematodes || entomopathogenic nematodes,arthropod,medline,,,no_answer,no_answer,0,0,,14.72,0,18
+P072,pipeline_extractive,Sinella curviseta,species,0,lab,0,pmc,fungivore|predator,fungivorous || fungi,arthropod,medline,,,no_answer,no_answer,0,1,,11.34,0,18
+P073,pipeline_extractive,Stenaphorura denisi,species,0,isotope,1,pmc,microbivore,microorganisms associated with roots || microorganisms,Tullbergia parisi,plazi,,,no_answer,no_answer,0,0,,3.54,0,1
+P074,pipeline_extractive,Tetrodontophora bielanensis,species,0,literature,0,pmc,fungivore,a large spectrum of fungi || fungi,humid litter and soil,medline,,detritivore,no_answer,wrong,0,1,,8.32,0,11
+P075,pipeline_extractive,Thalassaphorura debilis,species,1,isotope,0,pmc,algivore|herbivore,marine C4 plants/algae || C3 plant carbon || algae,arthropod,medline,,,no_answer,no_answer,0,0,,5.63,0,4
+P076,pipeline_extractive,Tomocerina varia,species,1,isotope,1,pmc,detritivore,litter,,,,,no_answer,no_answer,0,0,,2.5,1,0
+P077,pipeline_extractive,Tomocerus flavescens,species,1,lab,0,medline,algivore,algae,algae,medline,,algivore,no_answer,correct,1,1,,4.33,0,3
+P078,pipeline_extractive,Tomocerus laxalamella,species,1,isotope,1,pmc,detritivore,litter,,,,,no_answer,no_answer,0,0,,2.39,1,0
+P079,pipeline_extractive,Tomocerus minor,species,1,isotope,0,pmc,detritivore,fresh plant litter || plant litter,collembolan,medline,,,no_answer,no_answer,0,0,,6.98,0,13
+P080,pipeline_extractive,Vertagopus pseudocinereus,species,0,lab,0,medline,fungivore,the yeast Rhodotorula glutinis || Rhodotorula glutinis || yeast,green and newly fallen leaves,medline,,herbivore,no_answer,wrong,0,1,,4.27,0,3
+P081,pipeline_extractive,Vertagopus sarekensis,species,0,literature,0,pmc,algivore|microbivore,algae and microorganisms found on mosses || algae,"Isotomidae species in European high alpine regions, exhibiting coordinated group behavior and migration. This coordination, suggesting chemical communication, made the species interesting for our study on epicuticular hydrocarbons in springtails",medline,,,no_answer,no_answer,0,1,,5.34,0,2
+P082,pipeline_extractive,Agrenia,genus,1,gut,1,pmc,algivore,this biofilm || biofilm || diatoms,snow or ice,pmc,,,no_answer,no_answer,0,1,,5.78,0,0
+P083,pipeline_extractive,Bourletiella,genus,1,literature,0,pmc,herbivore,herbivorous || herbivore,dead organic matter,pmc,detritivore,detritivore,wrong,wrong,0,0,,6.43,0,0
+P084,pipeline_extractive,Crossodonthina,genus,0,lab,0,pmc,fungivore,slime mold || slime molds,slime mold,pmc,fungivore,fungivore,correct,correct,1,1,,6.71,0,0
+P085,pipeline_extractive,Desoria,genus,1,gut,1,pmc,algivore,this biofilm || biofilm || diatoms,snow or ice,pmc,,,no_answer,no_answer,0,0,,6.13,0,0
+P086,pipeline_extractive,Entomobrya,genus,0,literature,0,pmc,bacterivore|detritivore|fungivore,litter and its associated fungi and bacteria || litter || fungi and bacteria,springtails,medline,,,no_answer,no_answer,0,0,,5.16,0,0
+P087,pipeline_extractive,Entomobrya,genus,0,literature,0,pmc,bacterivore|detritivore|fungivore,litter material and the adhering fungi and bacteria || litter material || fungi and bacteria,springtails,medline,,,no_answer,no_answer,0,0,,2.21,0,0
+P088,pipeline_extractive,Folsomia,genus,0,literature,0,pmc,bacterivore|detritivore|fungivore,litter material and the adhering fungi and bacteria || litter material || fungi and bacteria,glucose,pmc,,,no_answer,no_answer,0,0,,7.37,0,0
+P089,pipeline_extractive,Isotomiella,genus,0,literature,1,pmc,fungivore|microbivore,fungivores || fungi,Rain forest litter,plazi,detritivore,detritivore,wrong,wrong,0,0,,7.42,0,0
+P090,pipeline_extractive,Isotomiella,genus,0,isotope,1,pmc,fungivore|microbivore,microbivores || microbial,Rain forest litter,plazi,detritivore,detritivore,wrong,wrong,0,1,,0.2,0,0
+P091,pipeline_extractive,Lepidocyrtus,genus,1,literature,0,plazi,herbivore,pollen,wind-borne pollen,plazi,herbivore,herbivore,correct,correct,1,1,,7.45,0,0
+P092,pipeline_extractive,Onychiurus,genus,1,isotope,0,pmc,detritivore,decomposers || first trophic level,mushrooms,medline,fungivore,fungivore,wrong,wrong,0,1,,7.45,0,0
+P093,pipeline_extractive,Orchesella,genus,0,literature,0,pmc,algivore|bacterivore|detritivore|fungivore,the alga Pleurococcus || Pleurococcus || Desmococcus || alga,litter material,pmc,detritivore,detritivore,correct,correct,0,0,,4.17,0,0
+P094,pipeline_extractive,Orchesella,genus,0,literature,0,pmc,algivore|bacterivore|detritivore|fungivore,litter material and the adhering fungi and bacteria || litter material || fungi and bacteria,litter material,pmc,detritivore,detritivore,correct,correct,1,1,,4.01,0,0
+P095,pipeline_extractive,Proisotoma,genus,0,literature,0,pmc,detritivore|fungivore,litter and some fungi || litter || fungi,springtails,medline,,,no_answer,no_answer,0,1,,7.08,0,0
+P096,pipeline_extractive,Protaphorura,genus,0,gut,0,pmc,fungivore,fungi || fungi-synthesised FAs and fungi in the gut,nematodes,pmc,predator,predator,wrong,wrong,0,0,,7.1,0,0
+P097,pipeline_extractive,Pseudosinella,genus,0,literature,1,pmc,detritivore|fungivore|microbivore|predator,fungivores || fungi,nematodes,pmc,predator,predator,correct,correct,0,0,,4.1,0,0
+P098,pipeline_extractive,Pseudosinella,genus,0,isotope,1,pmc,detritivore|fungivore|microbivore|predator,predator or scavenger || predator || scavenger || microbivores,nematodes,pmc,predator,predator,correct,correct,0,1,,4.08,0,0
+P099,pipeline_extractive,Superodontella,genus,1,field,1,pmc,bacterivore|predator,bacteria or bacterial feeding nematodes || bacteria || bacterial feeding nematodes,"cornifer
+Mills",pmc,,,no_answer,no_answer,0,1,,6.84,0,0
+P100,pipeline_extractive,Tomocerus,genus,0,literature,0,pmc,detritivore|fungivore|omnivore,"a variety of food materials including litter but also fungi and bacteria in the rhizosphere, algae as well as Nematoda || litter || fungi and bacteria || algae || Nematoda",mycorrhizal fungi,pmc,fungivore,fungivore,correct,correct,0,1,,6.21,0,0
+P101,pipeline_extractive,Willowsia,genus,0,literature,0,plazi,detritivore|fungivore,superficial molds and fine organic debris || molds || fine organic debris || fungivorous – detritivorous,detritus and associated microorganisms,pmc,bacterivore|detritivore,bacterivore|detritivore|fungivore|microbivore,correct,correct,0,0,,7.07,0,0
+P102,pipeline_extractive,Xenylla,genus,1,field,1,pmc,bacterivore|predator,bacteria or bacterial feeding nematodes || bacteria || bacterial feeding nematodes,algae and diatoms,pmc,algivore,algivore,wrong,wrong,0,1,,6.59,0,0

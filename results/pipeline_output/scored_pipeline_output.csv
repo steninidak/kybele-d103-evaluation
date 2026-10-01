@@ -1,0 +1,52 @@
+trait,rank,taxon,version,qids,gold,stored,stored_indirect,outcome,unsupported,gold_doc_in_sources,in_expert_review
+trophic_guild,genus,Agrenia,genus_batch,P082,algivore,algivore|bacterivore|herbivore|omnivore|predator,,correct,1,1,0
+trophic_guild,genus,Bourletiella,genus_batch,P083,herbivore,detritivore|predator,,wrong,1,0,0
+trophic_guild,genus,Desoria,genus_batch,P085,algivore,detritivore|fungivore|omnivore|predator,,wrong,1,0,0
+trophic_guild,genus,Entomobrya,genus_batch,P086|P087,bacterivore|detritivore|fungivore,,,abstained,0,0,0
+trophic_guild,genus,Folsomia,genus_batch,P088,bacterivore|detritivore|fungivore,bacterivore|detritivore|fungivore|omnivore|predator,,correct,1,0,0
+trophic_guild,genus,Isotomiella,genus_batch,P089|P090,fungivore|microbivore,,,abstained,0,1,0
+trophic_guild,genus,Lepidocyrtus,genus_batch,P091,herbivore,herbivore,,correct,0,1,0
+trophic_guild,genus,Onychiurus,genus_batch,P092,detritivore,detritivore|fungivore|omnivore|predator,,correct,1,0,0
+trophic_guild,genus,Orchesella,genus_batch,P093|P094,algivore|bacterivore|detritivore|fungivore,predator,,wrong,1,0,0
+trophic_guild,genus,Proisotoma,genus_batch,P095,detritivore|fungivore,detritivore,,correct,0,0,0
+trophic_guild,genus,Protaphorura,genus_batch,P096,fungivore,algivore|bacterivore|detritivore|fungivore|omnivore|predator,,correct,1,0,0
+trophic_guild,genus,Pseudosinella,genus_batch,P097|P098,detritivore|fungivore|microbivore|predator,predator,,correct,0,0,0
+trophic_guild,genus,Superodontella,genus_batch,P099,bacterivore|predator,,,abstained,0,0,0
+trophic_guild,genus,Tomocerus,genus_batch,P100,detritivore|fungivore|omnivore,,,abstained,0,0,0
+trophic_guild,genus,Willowsia,genus_batch,P101,detritivore|fungivore,,,abstained,0,0,0
+trophic_guild,genus,Xenylla,genus_batch,P102,bacterivore|predator,,,abstained,0,0,0
+trophic_guild,species,Agrenia bidenticulata,v3,P001,algivore|microbivore,,,abstained,0,0,0
+trophic_guild,species,Anurida maritima,v3,P002,omnivore|predator,,,abstained,0,0,0
+trophic_guild,species,Archisotoma pulchella,v3,P003,algivore,,,abstained,0,0,0
+trophic_guild,species,Ceratophysella denticulata,v3,P007,bacterivore|fungivore|microbivore,algivore|microbivore,,correct,1,0,0
+trophic_guild,species,Cryptopygus clavatus,v3,P008,algivore,algivore,,correct,0,1,0
+trophic_guild,species,Folsomia candida,v3,P013|P014|P015|P016|P017|P018|P019|P020|P021|P022|P023|P024|P025|P026,bacterivore|detritivore|fungivore,fungivore,,correct,0,1,1
+trophic_guild,species,Folsomia fimetaria,v3,P027,bacterivore|microbivore,,bacterivore|detritivore|fungivore|herbivore|microbivore|predator,abstained,0,1,1
+trophic_guild,species,Folsomia fimetarioides,v3,P028,fungivore,fungivore,,correct,0,1,1
+trophic_guild,species,Folsomia quadrioculata,v3,P030,detritivore,,algivore|bacterivore,abstained,0,0,0
+trophic_guild,species,Heteromurus nitidus,v3,P031|P032,fungivore|predator,fungivore|herbivore,omnivore,correct,1,1,1
+trophic_guild,species,Isotoma caerulea,v3,P033,detritivore|herbivore,herbivore|microbivore,,correct,1,1,1
+trophic_guild,species,Isotoma viridis,v3,P034|P035,algivore|detritivore|fungivore|microbivore,,,abstained,0,0,0
+trophic_guild,species,Isotomiella minor,v3,P036|P037,bacterivore|fungivore,,fungivore,abstained,0,1,0
+trophic_guild,species,Isotomurus palustris,v3,P038,predator,,,abstained,0,0,0
+trophic_guild,species,Lepidocyrtus cyaneus,v3,P041|P042,bacterivore|fungivore,,,abstained,0,0,1
+trophic_guild,species,Lepidocyrtus lignorum,v3,P043,fungivore,,,abstained,0,0,0
+trophic_guild,species,Lepidocyrtus violaceus,v3,P044,fungivore,,,abstained,0,0,0
+trophic_guild,species,Mesaphorura krausbaueri,v3,P045,fungivore,,,abstained,0,0,0
+trophic_guild,species,Neanura muscorum,v3,P046,fungivore,fungivore,,correct,0,1,1
+trophic_guild,species,Orchesella cincta,v3,P053|P054|P055,algivore|fungivore|herbivore,algivore,,correct,0,1,0
+trophic_guild,species,Orchesella flavescens,v3,P056,detritivore|herbivore,,,abstained,0,0,0
+trophic_guild,species,Orchesella villosa,v3,P057,detritivore|herbivore,herbivore|microbivore,,correct,1,1,1
+trophic_guild,species,Parisotoma notabilis,v3,P058,microbivore,,,abstained,0,0,0
+trophic_guild,species,Proisotoma minuta,v3,P060|P061|P062,fungivore,,fungivore,abstained,0,1,0
+trophic_guild,species,Protaphorura armata,v3,P063|P064|P065,fungivore,fungivore,herbivore,correct,0,1,0
+trophic_guild,species,Protaphorura fimata,v3,P066|P067|P068|P069|P070,detritivore|fungivore|herbivore,,fungivore|herbivore,abstained,0,1,1
+trophic_guild,species,Stenaphorura denisi,v3,P073,microbivore,,,abstained,0,0,0
+trophic_guild,species,Tetrodontophora bielanensis,v3,P074,fungivore,,,abstained,0,1,0
+trophic_guild,species,Tomocerus minor,v3,P079,detritivore,,,abstained,0,0,0
+trophic_guild,species,Vertagopus pseudocinereus,v3,P080,fungivore,fungivore,,correct,0,1,1
+trophic_guild,species,Vertagopus sarekensis,v3,P081,algivore|microbivore,,,abstained,0,1,0
+habitat,species,Megalothorax incertus,v3,K093,anthropized environments || mostly found in anthropized environments,,,abstained,,1,
+body_size,species,Megalothorax sanctistephani,v3,K162,0.2–0.34 mm || 0.2-0.34 mm || 0.26 mm,,,abstained,,1,
+body_size,species,Ceratophysella stachi,v3,K166,1-2 mm || 1–2 mm,,,abstained,,1,
+habitat,species,Isotomurus palustris,v3,K225,damp habitats,,,abstained,,0,

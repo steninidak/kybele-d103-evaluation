@@ -1,0 +1,856 @@
+{
+  "traits": {
+    "traits_main/doc_extractive": {
+      "n": 122,
+      "gold_retrieved": {
+        "k": 122,
+        "n": 122,
+        "rate": 1.0,
+        "ci95": [
+          0.969,
+          1.0
+        ]
+      },
+      "answer_correct": {
+        "k": 75,
+        "n": 122,
+        "rate": 0.615,
+        "ci95": [
+          0.526,
+          0.696
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 75,
+        "n": 122,
+        "rate": 0.615,
+        "ci95": [
+          0.526,
+          0.696
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null
+      }
+    },
+    "traits_main/doc_generative": {
+      "n": 122,
+      "gold_retrieved": {
+        "k": 122,
+        "n": 122,
+        "rate": 1.0,
+        "ci95": [
+          0.969,
+          1.0
+        ]
+      },
+      "answer_correct": {
+        "k": 60,
+        "n": 122,
+        "rate": 0.492,
+        "ci95": [
+          0.405,
+          0.579
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 60,
+        "n": 122,
+        "rate": 0.492,
+        "ci95": [
+          0.405,
+          0.579
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null
+      }
+    },
+    "traits_main/e2e_dense_generative": {
+      "n": 22,
+      "gold_retrieved": {
+        "k": 11,
+        "n": 22,
+        "rate": 0.5,
+        "ci95": [
+          0.307,
+          0.693
+        ]
+      },
+      "answer_correct": {
+        "k": 9,
+        "n": 22,
+        "rate": 0.409,
+        "ci95": [
+          0.233,
+          0.613
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 6,
+        "n": 11,
+        "rate": 0.545,
+        "ci95": [
+          0.28,
+          0.787
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 3,
+        "n": 11,
+        "rate": 0.273,
+        "ci95": [
+          0.097,
+          0.566
+        ]
+      }
+    },
+    "traits_main/e2e_sparse_extractive": {
+      "n": 122,
+      "gold_retrieved": {
+        "k": 74,
+        "n": 122,
+        "rate": 0.607,
+        "ci95": [
+          0.518,
+          0.689
+        ]
+      },
+      "answer_correct": {
+        "k": 48,
+        "n": 122,
+        "rate": 0.393,
+        "ci95": [
+          0.311,
+          0.482
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 41,
+        "n": 74,
+        "rate": 0.554,
+        "ci95": [
+          0.441,
+          0.662
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 7,
+        "n": 48,
+        "rate": 0.146,
+        "ci95": [
+          0.072,
+          0.272
+        ]
+      }
+    },
+    "traits_main/e2e_sparse_generative": {
+      "n": 122,
+      "gold_retrieved": {
+        "k": 79,
+        "n": 122,
+        "rate": 0.648,
+        "ci95": [
+          0.559,
+          0.727
+        ]
+      },
+      "answer_correct": {
+        "k": 55,
+        "n": 122,
+        "rate": 0.451,
+        "ci95": [
+          0.365,
+          0.539
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 48,
+        "n": 79,
+        "rate": 0.608,
+        "ci95": [
+          0.497,
+          0.708
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 7,
+        "n": 43,
+        "rate": 0.163,
+        "ci95": [
+          0.081,
+          0.3
+        ]
+      }
+    },
+    "traits_pipeline/pipeline": {
+      "n": 122,
+      "gold_retrieved": {
+        "k": 121,
+        "n": 122,
+        "rate": 0.992,
+        "ci95": [
+          0.955,
+          0.999
+        ]
+      },
+      "answer_correct": {
+        "k": 52,
+        "n": 122,
+        "rate": 0.426,
+        "ci95": [
+          0.342,
+          0.515
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 52,
+        "n": 121,
+        "rate": 0.43,
+        "ci95": [
+          0.345,
+          0.519
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 0,
+        "n": 1,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.793
+        ]
+      },
+      "stored_correct": {
+        "k": 47,
+        "n": 122,
+        "rate": 0.385,
+        "ci95": [
+          0.304,
+          0.474
+        ]
+      },
+      "stored_correct|answer_correct": {
+        "k": 47,
+        "n": 52,
+        "rate": 0.904,
+        "ci95": [
+          0.794,
+          0.958
+        ]
+      },
+      "stored_wrong": {
+        "k": 1,
+        "n": 122,
+        "rate": 0.008,
+        "ci95": [
+          0.001,
+          0.045
+        ]
+      }
+    },
+    "traits_pipeline/pipeline/selection_rules": {
+      "pipeline_first": {
+        "answer_correct": {
+          "k": 51,
+          "n": 115,
+          "rate": 0.443,
+          "ci95": [
+            0.356,
+            0.535
+          ]
+        },
+        "stored_correct": {
+          "k": 46,
+          "n": 115,
+          "rate": 0.4,
+          "ci95": [
+            0.315,
+            0.491
+          ]
+        }
+      },
+      "highest_score": {
+        "answer_correct": {
+          "k": 51,
+          "n": 115,
+          "rate": 0.443,
+          "ci95": [
+            0.356,
+            0.535
+          ]
+        },
+        "stored_correct": {
+          "k": 46,
+          "n": 115,
+          "rate": 0.4,
+          "ci95": [
+            0.315,
+            0.491
+          ]
+        }
+      },
+      "first_not_denying": {
+        "answer_correct": {
+          "k": 65,
+          "n": 115,
+          "rate": 0.565,
+          "ci95": [
+            0.474,
+            0.652
+          ]
+        },
+        "stored_correct": {
+          "k": 59,
+          "n": 115,
+          "rate": 0.513,
+          "ci95": [
+            0.423,
+            0.602
+          ]
+        }
+      }
+    }
+  },
+  "trophic": {
+    "trophic/doc_extractive": {
+      "n": 102,
+      "gold_retrieved": {
+        "k": 102,
+        "n": 102,
+        "rate": 1.0,
+        "ci95": [
+          0.964,
+          1.0
+        ]
+      },
+      "answer_correct": {
+        "k": 79,
+        "n": 102,
+        "rate": 0.775,
+        "ci95": [
+          0.684,
+          0.845
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 79,
+        "n": 102,
+        "rate": 0.775,
+        "ci95": [
+          0.684,
+          0.845
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "answer_correct_base_vocabulary": {
+        "k": 56,
+        "n": 102,
+        "rate": 0.549,
+        "ci95": [
+          0.452,
+          0.642
+        ]
+      },
+      "food_named": {
+        "k": 67,
+        "n": 102,
+        "rate": 0.657,
+        "ci95": [
+          0.561,
+          0.742
+        ]
+      }
+    },
+    "trophic/doc_generative": {
+      "n": 102,
+      "gold_retrieved": {
+        "k": 102,
+        "n": 102,
+        "rate": 1.0,
+        "ci95": [
+          0.964,
+          1.0
+        ]
+      },
+      "answer_correct": {
+        "k": 87,
+        "n": 102,
+        "rate": 0.853,
+        "ci95": [
+          0.771,
+          0.909
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 87,
+        "n": 102,
+        "rate": 0.853,
+        "ci95": [
+          0.771,
+          0.909
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "stored_correct": {
+        "k": 62,
+        "n": 102,
+        "rate": 0.608,
+        "ci95": [
+          0.511,
+          0.697
+        ]
+      },
+      "stored_correct|answer_correct": {
+        "k": 62,
+        "n": 87,
+        "rate": 0.713,
+        "ci95": [
+          0.61,
+          0.797
+        ]
+      },
+      "stored_wrong": {
+        "k": 2,
+        "n": 102,
+        "rate": 0.02,
+        "ci95": [
+          0.005,
+          0.069
+        ]
+      },
+      "answer_correct_base_vocabulary": {
+        "k": 78,
+        "n": 102,
+        "rate": 0.765,
+        "ci95": [
+          0.674,
+          0.836
+        ]
+      },
+      "food_named": {
+        "k": 70,
+        "n": 102,
+        "rate": 0.686,
+        "ci95": [
+          0.591,
+          0.768
+        ]
+      }
+    },
+    "trophic/e2e_dense_generative": {
+      "n": 80,
+      "gold_retrieved": {
+        "k": 38,
+        "n": 80,
+        "rate": 0.475,
+        "ci95": [
+          0.369,
+          0.583
+        ]
+      },
+      "answer_correct": {
+        "k": 70,
+        "n": 80,
+        "rate": 0.875,
+        "ci95": [
+          0.785,
+          0.931
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 35,
+        "n": 38,
+        "rate": 0.921,
+        "ci95": [
+          0.792,
+          0.973
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 35,
+        "n": 42,
+        "rate": 0.833,
+        "ci95": [
+          0.694,
+          0.917
+        ]
+      },
+      "stored_correct": {
+        "k": 57,
+        "n": 80,
+        "rate": 0.713,
+        "ci95": [
+          0.605,
+          0.8
+        ]
+      },
+      "stored_correct|answer_correct": {
+        "k": 57,
+        "n": 70,
+        "rate": 0.814,
+        "ci95": [
+          0.708,
+          0.888
+        ]
+      },
+      "stored_wrong": {
+        "k": 1,
+        "n": 80,
+        "rate": 0.013,
+        "ci95": [
+          0.002,
+          0.067
+        ]
+      },
+      "answer_correct_base_vocabulary": {
+        "k": 70,
+        "n": 80,
+        "rate": 0.875,
+        "ci95": [
+          0.785,
+          0.931
+        ]
+      },
+      "food_named": {
+        "k": 33,
+        "n": 80,
+        "rate": 0.412,
+        "ci95": [
+          0.311,
+          0.522
+        ]
+      }
+    },
+    "trophic/e2e_sparse_extractive": {
+      "n": 102,
+      "gold_retrieved": {
+        "k": 56,
+        "n": 102,
+        "rate": 0.549,
+        "ci95": [
+          0.452,
+          0.642
+        ]
+      },
+      "answer_correct": {
+        "k": 32,
+        "n": 102,
+        "rate": 0.314,
+        "ci95": [
+          0.232,
+          0.409
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 25,
+        "n": 56,
+        "rate": 0.446,
+        "ci95": [
+          0.324,
+          0.576
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 7,
+        "n": 46,
+        "rate": 0.152,
+        "ci95": [
+          0.076,
+          0.282
+        ]
+      },
+      "answer_correct_base_vocabulary": {
+        "k": 20,
+        "n": 102,
+        "rate": 0.196,
+        "ci95": [
+          0.131,
+          0.284
+        ]
+      },
+      "food_named": {
+        "k": 16,
+        "n": 102,
+        "rate": 0.157,
+        "ci95": [
+          0.099,
+          0.24
+        ]
+      }
+    },
+    "trophic/e2e_sparse_generative": {
+      "n": 102,
+      "gold_retrieved": {
+        "k": 56,
+        "n": 102,
+        "rate": 0.549,
+        "ci95": [
+          0.452,
+          0.642
+        ]
+      },
+      "answer_correct": {
+        "k": 90,
+        "n": 102,
+        "rate": 0.882,
+        "ci95": [
+          0.806,
+          0.931
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 47,
+        "n": 56,
+        "rate": 0.839,
+        "ci95": [
+          0.722,
+          0.913
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 43,
+        "n": 46,
+        "rate": 0.935,
+        "ci95": [
+          0.825,
+          0.978
+        ]
+      },
+      "stored_correct": {
+        "k": 74,
+        "n": 102,
+        "rate": 0.725,
+        "ci95": [
+          0.632,
+          0.803
+        ]
+      },
+      "stored_correct|answer_correct": {
+        "k": 74,
+        "n": 90,
+        "rate": 0.822,
+        "ci95": [
+          0.731,
+          0.888
+        ]
+      },
+      "stored_wrong": {
+        "k": 6,
+        "n": 102,
+        "rate": 0.059,
+        "ci95": [
+          0.027,
+          0.122
+        ]
+      },
+      "answer_correct_base_vocabulary": {
+        "k": 89,
+        "n": 102,
+        "rate": 0.873,
+        "ci95": [
+          0.794,
+          0.924
+        ]
+      },
+      "food_named": {
+        "k": 45,
+        "n": 102,
+        "rate": 0.441,
+        "ci95": [
+          0.349,
+          0.538
+        ]
+      }
+    },
+    "trophic_pipeline/pipeline": {
+      "n": 102,
+      "gold_retrieved": {
+        "k": 42,
+        "n": 102,
+        "rate": 0.412,
+        "ci95": [
+          0.321,
+          0.509
+        ]
+      },
+      "answer_correct": {
+        "k": 70,
+        "n": 102,
+        "rate": 0.686,
+        "ci95": [
+          0.591,
+          0.768
+        ]
+      },
+      "answer_correct|retrieved": {
+        "k": 36,
+        "n": 42,
+        "rate": 0.857,
+        "ci95": [
+          0.722,
+          0.933
+        ]
+      },
+      "answer_correct|not_retrieved": {
+        "k": 34,
+        "n": 60,
+        "rate": 0.567,
+        "ci95": [
+          0.441,
+          0.684
+        ]
+      },
+      "stored_correct": {
+        "k": 57,
+        "n": 102,
+        "rate": 0.559,
+        "ci95": [
+          0.462,
+          0.651
+        ]
+      },
+      "stored_correct|answer_correct": {
+        "k": 57,
+        "n": 70,
+        "rate": 0.814,
+        "ci95": [
+          0.708,
+          0.888
+        ]
+      },
+      "stored_wrong": {
+        "k": 4,
+        "n": 102,
+        "rate": 0.039,
+        "ci95": [
+          0.015,
+          0.097
+        ]
+      },
+      "answer_correct_base_vocabulary": {
+        "k": 68,
+        "n": 102,
+        "rate": 0.667,
+        "ci95": [
+          0.571,
+          0.751
+        ]
+      },
+      "food_named": {
+        "k": 34,
+        "n": 102,
+        "rate": 0.333,
+        "ci95": [
+          0.249,
+          0.429
+        ]
+      }
+    },
+    "trophic_pipeline/pipeline/selection_rules(species)": {
+      "pipeline_first": {
+        "answer_correct": {
+          "k": 50,
+          "n": 81,
+          "rate": 0.617,
+          "ci95": [
+            0.508,
+            0.716
+          ]
+        },
+        "stored_correct": {
+          "k": 37,
+          "n": 81,
+          "rate": 0.457,
+          "ci95": [
+            0.353,
+            0.565
+          ]
+        },
+        "food_named": {
+          "k": 24,
+          "n": 81,
+          "rate": 0.296,
+          "ci95": [
+            0.208,
+            0.403
+          ]
+        }
+      },
+      "highest_score": {
+        "answer_correct": {
+          "k": 50,
+          "n": 81,
+          "rate": 0.617,
+          "ci95": [
+            0.508,
+            0.716
+          ]
+        },
+        "stored_correct": {
+          "k": 37,
+          "n": 81,
+          "rate": 0.457,
+          "ci95": [
+            0.353,
+            0.565
+          ]
+        },
+        "food_named": {
+          "k": 24,
+          "n": 81,
+          "rate": 0.296,
+          "ci95": [
+            0.208,
+            0.403
+          ]
+        }
+      },
+      "first_not_denying": {
+        "answer_correct": {
+          "k": 56,
+          "n": 81,
+          "rate": 0.691,
+          "ci95": [
+            0.584,
+            0.781
+          ]
+        },
+        "stored_correct": {
+          "k": 44,
+          "n": 81,
+          "rate": 0.543,
+          "ci95": [
+            0.435,
+            0.647
+          ]
+        },
+        "food_named": {
+          "k": 28,
+          "n": 81,
+          "rate": 0.346,
+          "ci95": [
+            0.251,
+            0.454
+          ]
+        }
+      }
+    }
+  }
+}

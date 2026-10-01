@@ -1,0 +1,91 @@
+{
+  "pipeline_commit": "1d5b5b62ab8fa6c13e5097701affdbba442c8764",
+  "trophic_guild/v3": {
+    "all": {
+      "n": 31,
+      "correct": 0.355,
+      "wrong": 0.0,
+      "abstained": 0.645,
+      "counts": {
+        "correct": 11,
+        "wrong": 0,
+        "abstained": 20
+      },
+      "precision_when_stored": 1.0,
+      "unsupported_when_stored": 0.364,
+      "gold_doc_in_sources": 0.516
+    },
+    "not_in_expert_review": {
+      "n": 21,
+      "correct": 0.19,
+      "wrong": 0.0,
+      "abstained": 0.81,
+      "counts": {
+        "correct": 4,
+        "wrong": 0,
+        "abstained": 17
+      },
+      "precision_when_stored": 1.0,
+      "unsupported_when_stored": 0.25,
+      "gold_doc_in_sources": 0.333
+    },
+    "in_expert_review": {
+      "n": 10,
+      "correct": 0.7,
+      "wrong": 0.0,
+      "abstained": 0.3,
+      "counts": {
+        "correct": 7,
+        "wrong": 0,
+        "abstained": 3
+      },
+      "precision_when_stored": 1.0,
+      "unsupported_when_stored": 0.429,
+      "gold_doc_in_sources": 0.9
+    }
+  },
+  "trophic_guild/genus_batch": {
+    "all": {
+      "n": 16,
+      "correct": 0.438,
+      "wrong": 0.188,
+      "abstained": 0.375,
+      "counts": {
+        "correct": 7,
+        "wrong": 3,
+        "abstained": 6
+      },
+      "precision_when_stored": 0.7,
+      "unsupported_when_stored": 0.7,
+      "gold_doc_in_sources": 0.188
+    }
+  },
+  "body_size/v3": {
+    "all": {
+      "n": 2,
+      "correct": 0.0,
+      "wrong": 0.0,
+      "abstained": 1.0,
+      "counts": {
+        "correct": 0,
+        "wrong": 0,
+        "abstained": 2
+      },
+      "gold_doc_in_sources": 1.0
+    }
+  },
+  "habitat/v3": {
+    "all": {
+      "n": 2,
+      "correct": 0.0,
+      "wrong": 0.0,
+      "abstained": 1.0,
+      "counts": {
+        "correct": 0,
+        "wrong": 0,
+        "abstained": 2
+      },
+      "gold_doc_in_sources": 0.5
+    }
+  }
+}

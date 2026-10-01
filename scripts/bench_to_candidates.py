@@ -18,7 +18,7 @@ import sys
 
 FIELDS = ["qid", "docid", "species", "treatment_title", "family", "article_title", "doi",
           "treatment_uri", "question_type", "question", "candidate_answer", "gold_context",
-          "answer_offset", "text_length", "gold_answer", "curation", "curation_note"]
+          "answer_offset", "text_length", "gold_answer", "curation", "curation_note", "taxon_rank"]
 
 
 def main(bench_path, out_path):
@@ -27,6 +27,7 @@ def main(bench_path, out_path):
     for r in rows:
         c = {k: r.get(k, "") for k in FIELDS}
         c["species"] = r["taxon"]
+        c["taxon_rank"] = r.get("taxon_rank") or "species"  # the pipeline configuration asks genera differently
         c["treatment_title"] = r.get("treatment_title") or r.get("source_title", "")  # fallback doc_ref
         c["article_title"] = r.get("article_title") or r.get("source_title", "")
         c["candidate_answer"] = r["gold_answer"].split("||")[0].strip()
